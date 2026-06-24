@@ -8,6 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
 [ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4xhs"]
+bg_color = Color(0.6, 0.8, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhbjx"]
+bg_color = Color(0.6, 0.8, 1, 1)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+shadow_color = Color(0.36078432, 0.6784314, 1, 0.39215687)
+shadow_size = 4
+shadow_offset = Vector2(0, 1)
+
 [node name="DialogueUI" type="MarginContainer" unique_id=290942469]
 anchors_preset = 12
 anchor_top = 1.0
@@ -23,47 +40,74 @@ theme_override_constants/margin_bottom = 40
 
 [node name="MainStack" type="VBoxContainer" parent="." unique_id=1629778387]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="DialogueBox" type="VBoxContainer" parent="MainStack" unique_id=1480369106]
+[node name="BottomAlignment" type="VBoxContainer" parent="MainStack" unique_id=202009114]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DialogueAlignment" type="VBoxContainer" parent="MainStack/BottomAlignment" unique_id=1480369106]
+layout_mode = 2
+theme_override_constants/separation = -33
+
+[node name="NameAlignment" type="VBoxContainer" parent="MainStack/BottomAlignment/DialogueAlignment" unique_id=307052776]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = -8
+
+[node name="NamePanel" type="PanelContainer" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment" unique_id=563489288]
+z_index = 1
+custom_minimum_size = Vector2(178, 64)
+custom_maximum_size = Vector2(178, -1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4xhs")
+
+[node name="TabAlignment" type="CenterContainer" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment" unique_id=515559363]
 layout_mode = 2
 
-[node name="TextPanel" type="PanelContainer" parent="MainStack/DialogueBox" unique_id=642703069]
+[node name="TabCircle" type="Panel" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment/TabAlignment" unique_id=1757762099]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xhbjx")
+
+[node name="TextPanel" type="PanelContainer" parent="MainStack/BottomAlignment/DialogueAlignment" unique_id=642703069]
 material = ExtResource("2_lrxjj")
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_lrxjj")
 
-[node name="ButtonRowAlignment" type="HBoxContainer" parent="MainStack" unique_id=1729974073]
+[node name="ButtonAlignment" type="HBoxContainer" parent="MainStack/BottomAlignment" unique_id=1729974073]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 2
 
-[node name="Row1" type="HBoxContainer" parent="MainStack/ButtonRowAlignment" unique_id=1688281597]
+[node name="Row1" type="HBoxContainer" parent="MainStack/BottomAlignment/ButtonAlignment" unique_id=1688281597]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="AutoButton" type="Button" parent="MainStack/ButtonRowAlignment/Row1" unique_id=598215608]
+[node name="AutoButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row1" unique_id=598215608]
 layout_mode = 2
 toggle_mode = true
 text = "Auto"
 icon = ExtResource("4_udopk")
 
-[node name="NextButton" type="Button" parent="MainStack/ButtonRowAlignment/Row1" unique_id=1480766964]
+[node name="NextButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row1" unique_id=1480766964]
 layout_mode = 2
 text = "Next"
 icon = ExtResource("4_oqorm")
 icon_alignment = 2
 
-[node name="Row2" type="HBoxContainer" parent="MainStack/ButtonRowAlignment" unique_id=2012834880]
+[node name="Row2" type="HBoxContainer" parent="MainStack/BottomAlignment/ButtonAlignment" unique_id=2012834880]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HistoryButton" type="Button" parent="MainStack/ButtonRowAlignment/Row2" unique_id=198376439]
+[node name="HistoryButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row2" unique_id=198376439]
 layout_mode = 2
 text = "History"
 icon = ExtResource("6_xhbjx")
 
-[node name="HideUIButton" type="Button" parent="MainStack/ButtonRowAlignment/Row2" unique_id=1039318020]
+[node name="HideUIButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row2" unique_id=1039318020]
 layout_mode = 2
 toggle_mode = true
 icon = ExtResource("7_q4xhs")
