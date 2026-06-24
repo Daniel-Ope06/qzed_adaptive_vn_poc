@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://brdj7h76p3dcm"]
+
+[ext_resource type="Shader" uid="uid://3ev1n5dgd7eh" path="res://assets/ui_textures/frosted_glass.gdshader" id="1_qfb7v"]
+
+[resource]
+shader = ExtResource("1_qfb7v")
+shader_parameter/blur_amount = 2.5
