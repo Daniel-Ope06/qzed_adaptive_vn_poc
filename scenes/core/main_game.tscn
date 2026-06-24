@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0lxk5jxvr6h2"]
 
 [ext_resource type="PackedScene" uid="uid://cwdfewbdxujqv" path="res://scenes/core/visual_layer.tscn" id="1_1u5st"]
+[ext_resource type="Script" uid="uid://ce3p8dk3gi3g6" path="res://scenes/core/main_game.gd" id="1_0226t"]
 
 [node name="MainGame" type="Control" unique_id=237868922]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0226t")
 
 [node name="VisualLayer" parent="." unique_id=2036329196 instance=ExtResource("1_1u5st")]
 layout_mode = 1
