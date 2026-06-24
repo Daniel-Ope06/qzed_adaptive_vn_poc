@@ -1,25 +1,14 @@
 [gd_scene format=3 uid="uid://dagdcald31mm6"]
 
-[ext_resource type="Shader" uid="uid://3ev1n5dgd7eh" path="res://assets/ui_textures/frosted_glass.gdshader" id="1_4on2u"]
 [ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="1_8c1m1"]
+[ext_resource type="Material" uid="uid://brdj7h76p3dcm" path="res://assets/ui_textures/frosted_glass.tres" id="2_lrxjj"]
+[ext_resource type="StyleBox" uid="uid://0ccka055wd01" path="res://assets/ui_textures/text_box.tres" id="3_lrxjj"]
+[ext_resource type="Texture2D" uid="uid://c8oevxpo6t6cp" path="res://assets/ui_icons/icon_sys_next.png" id="4_oqorm"]
+[ext_resource type="Texture2D" uid="uid://coi0tyq6dfqp1" path="res://assets/ui_icons/icon_sys_auto.png" id="4_udopk"]
+[ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
+[ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_httq2"]
-shader = ExtResource("1_4on2u")
-shader_parameter/blur_amount = 2.5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrxjj"]
-bg_color = Color(0.36078432, 0.6784314, 1, 0.39215687)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.6, 0.8, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[node name="DialogueUi" type="MarginContainer" unique_id=290942469]
+[node name="DialogueUI" type="MarginContainer" unique_id=290942469]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -39,7 +28,42 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextPanel" type="PanelContainer" parent="MainStack/DialogueBox" unique_id=642703069]
-material = SubResource("ShaderMaterial_httq2")
+material = ExtResource("2_lrxjj")
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lrxjj")
+theme_override_styles/panel = ExtResource("3_lrxjj")
+
+[node name="ButtonRowAlignment" type="HBoxContainer" parent="MainStack" unique_id=1729974073]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Row1" type="HBoxContainer" parent="MainStack/ButtonRowAlignment" unique_id=1688281597]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AutoButton" type="Button" parent="MainStack/ButtonRowAlignment/Row1" unique_id=598215608]
+layout_mode = 2
+toggle_mode = true
+text = "Auto"
+icon = ExtResource("4_udopk")
+
+[node name="NextButton" type="Button" parent="MainStack/ButtonRowAlignment/Row1" unique_id=1480766964]
+layout_mode = 2
+text = "Next"
+icon = ExtResource("4_oqorm")
+icon_alignment = 2
+
+[node name="Row2" type="HBoxContainer" parent="MainStack/ButtonRowAlignment" unique_id=2012834880]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HistoryButton" type="Button" parent="MainStack/ButtonRowAlignment/Row2" unique_id=198376439]
+layout_mode = 2
+text = "History"
+icon = ExtResource("6_xhbjx")
+
+[node name="HideUIButton" type="Button" parent="MainStack/ButtonRowAlignment/Row2" unique_id=1039318020]
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("7_q4xhs")
