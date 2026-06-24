@@ -1,11 +1,8 @@
 extends Control
 
+@onready var visual_layer: Control = $VisualLayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	# For testing purposes, use dispersion event cg.
+	var test_asset_path: String = "res://assets/cgs/cg_ch3_prism_dispersion.jpeg"
+	visual_layer.display_scene(visual_layer.VisualType.EVENT_CG, test_asset_path)
