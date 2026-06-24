@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dagdcald31mm6"]
 
 [ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="1_8c1m1"]
+[ext_resource type="Script" uid="uid://ccblont45o51h" path="res://scenes/core/dialogue_ui.gd" id="2_4uofa"]
 [ext_resource type="Material" uid="uid://brdj7h76p3dcm" path="res://assets/ui_textures/frosted_glass.tres" id="2_lrxjj"]
 [ext_resource type="StyleBox" uid="uid://0ccka055wd01" path="res://assets/ui_textures/text_box.tres" id="3_lrxjj"]
 [ext_resource type="Texture2D" uid="uid://c8oevxpo6t6cp" path="res://assets/ui_icons/icon_sys_next.png" id="4_oqorm"]
@@ -72,6 +73,7 @@ theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 40
+script = ExtResource("2_4uofa")
 
 [node name="MainStack" type="VBoxContainer" parent="." unique_id=1629778387]
 layout_mode = 2
@@ -177,5 +179,4 @@ icon = ExtResource("6_xhbjx")
 
 [node name="HideUIButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row2" unique_id=1039318020]
 layout_mode = 2
-toggle_mode = true
 icon = ExtResource("7_q4xhs")
