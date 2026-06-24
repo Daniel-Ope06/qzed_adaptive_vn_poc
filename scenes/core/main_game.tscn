@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwdfewbdxujqv" path="res://scenes/core/visual_layer.tscn" id="1_1u5st"]
 [ext_resource type="Script" uid="uid://ce3p8dk3gi3g6" path="res://scenes/core/main_game.gd" id="1_0226t"]
+[ext_resource type="PackedScene" uid="uid://dagdcald31mm6" path="res://scenes/core/dialogue_ui.tscn" id="3_kikm7"]
 
 [node name="MainGame" type="Control" unique_id=237868922]
 layout_mode = 3
@@ -14,3 +15,8 @@ script = ExtResource("1_0226t")
 
 [node name="VisualLayer" parent="." unique_id=2036329196 instance=ExtResource("1_1u5st")]
 layout_mode = 1
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=570001893]
+
+[node name="DialogueUi" parent="UILayer" unique_id=290942469 instance=ExtResource("3_kikm7")]
+offset_top = -340.0
