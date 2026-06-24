@@ -4,11 +4,16 @@
 [ext_resource type="Material" uid="uid://brdj7h76p3dcm" path="res://assets/ui_textures/frosted_glass.tres" id="2_lrxjj"]
 [ext_resource type="StyleBox" uid="uid://0ccka055wd01" path="res://assets/ui_textures/text_box.tres" id="3_lrxjj"]
 [ext_resource type="Texture2D" uid="uid://c8oevxpo6t6cp" path="res://assets/ui_icons/icon_sys_next.png" id="4_oqorm"]
+[ext_resource type="Texture2D" uid="uid://dwjvep6r0t73a" path="res://assets/ui_icons/icon_sys_dictionary.png" id="4_q4xhs"]
 [ext_resource type="Texture2D" uid="uid://coi0tyq6dfqp1" path="res://assets/ui_icons/icon_sys_auto.png" id="4_udopk"]
 [ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
 [ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4xhs"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0.6, 0.8, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -24,6 +29,36 @@ corner_radius_bottom_left = 21
 shadow_color = Color(0.36078432, 0.6784314, 1, 0.39215687)
 shadow_size = 4
 shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uofa"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.8392157, 0.8392157, 0.8392157, 1)
+border_width_top = 5
+border_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.49019608, 0.4862745, 0.4862745, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o3ep"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.6556741, 0.65190053, 0.65189993, 1)
+border_width_top = 5
+border_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.49019608, 0.4862745, 0.4862745, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
 
 [node name="DialogueUI" type="MarginContainer" unique_id=290942469]
 anchors_preset = 12
@@ -63,6 +98,13 @@ custom_maximum_size = Vector2(178, -1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q4xhs")
 
+[node name="SpeakerName" type="RichTextLabel" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel" unique_id=154801210]
+layout_mode = 2
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TabAlignment" type="CenterContainer" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment" unique_id=515559363]
 layout_mode = 2
 
@@ -76,6 +118,32 @@ material = ExtResource("2_lrxjj")
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_lrxjj")
+
+[node name="Padding" type="MarginContainer" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel" unique_id=58248699]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Row" type="HBoxContainer" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding" unique_id=168218017]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="DialogueText" type="RichTextLabel" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row" unique_id=406248964]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DictionaryButton" type="Button" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row" unique_id=1443163817]
+custom_minimum_size = Vector2(56, 56)
+custom_maximum_size = Vector2(56, 56)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_4uofa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7o3ep")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4uofa")
+toggle_mode = true
+icon = ExtResource("4_q4xhs")
 
 [node name="ButtonAlignment" type="HBoxContainer" parent="MainStack/BottomAlignment" unique_id=1729974073]
 layout_mode = 2
