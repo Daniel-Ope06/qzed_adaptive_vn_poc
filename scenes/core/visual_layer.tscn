@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cwdfewbdxujqv"]
 
+[ext_resource type="Script" uid="uid://clvjutf8hdnai" path="res://scenes/core/visual_layer.gd" id="1_xjw0v"]
+
 [node name="VisualLayer" type="Control" unique_id=2036329196]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xjw0v")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1148471029]
 layout_mode = 1
