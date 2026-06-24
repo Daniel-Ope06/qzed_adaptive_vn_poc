@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dagdcald31mm6"]
 
-[ext_resource type="Shader" uid="uid://3ev1n5dgd7eh" path="res://scenes/core/frosted_glass.gdshader" id="1_4on2u"]
+[ext_resource type="Shader" uid="uid://3ev1n5dgd7eh" path="res://assets/ui_textures/frosted_glass.gdshader" id="1_4on2u"]
+[ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="1_8c1m1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_httq2"]
 shader = ExtResource("1_4on2u")
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("1_8c1m1")
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 60
