@@ -18,5 +18,5 @@ layout_mode = 1
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=570001893]
 
-[node name="DialogueUi" parent="UILayer" unique_id=290942469 instance=ExtResource("3_kikm7")]
+[node name="DialogueUI" parent="UILayer" unique_id=290942469 instance=ExtResource("3_kikm7")]
 offset_top = -340.0
