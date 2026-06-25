@@ -3,10 +3,12 @@
 [ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="1_8c1m1"]
 [ext_resource type="Script" uid="uid://ccblont45o51h" path="res://scenes/core/dialogue_ui.gd" id="2_4uofa"]
 [ext_resource type="Material" uid="uid://brdj7h76p3dcm" path="res://assets/ui_textures/frosted_glass.tres" id="2_lrxjj"]
+[ext_resource type="FontFile" uid="uid://dnsmn4js6mj02" path="res://assets/fonts/clash_display/ClashDisplay-Semibold.otf" id="3_7o3ep"]
 [ext_resource type="StyleBox" uid="uid://0ccka055wd01" path="res://assets/ui_textures/text_box.tres" id="3_lrxjj"]
 [ext_resource type="Texture2D" uid="uid://c8oevxpo6t6cp" path="res://assets/ui_icons/icon_sys_next.png" id="4_oqorm"]
 [ext_resource type="Texture2D" uid="uid://dwjvep6r0t73a" path="res://assets/ui_icons/icon_sys_dictionary.png" id="4_q4xhs"]
 [ext_resource type="Texture2D" uid="uid://coi0tyq6dfqp1" path="res://assets/ui_icons/icon_sys_auto.png" id="4_udopk"]
+[ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="6_r5j0u"]
 [ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
 [ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
 
@@ -102,6 +104,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q4xhs")
 
 [node name="SpeakerName" type="RichTextLabel" parent="MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel" unique_id=154801210]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7o3ep")
+theme_override_font_sizes/normal_font_size = 36
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -135,6 +139,9 @@ theme_override_constants/separation = 24
 [node name="DialogueText" type="RichTextLabel" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row" unique_id=406248964]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("6_r5j0u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 
 [node name="DictionaryButton" type="Button" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row" unique_id=1443163817]
 custom_minimum_size = Vector2(56, 56)
