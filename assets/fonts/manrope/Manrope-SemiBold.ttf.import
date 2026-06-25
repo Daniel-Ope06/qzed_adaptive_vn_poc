@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ce1k7myu0ajho"
-path="res://.godot/imported/Manrope-VariableFont_wght.ttf-fdf9bb155ba4a56372970970dca16b3e.fontdata"
+uid="uid://ijvb12ayqv3f"
+path="res://.godot/imported/Manrope-SemiBold.ttf-af7dbfba7d3c9431c5fea0906eaeafff.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Manrope-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/Manrope-VariableFont_wght.ttf-fdf9bb155ba4a56372970970dca16b3e.fontdata"]
+source_file="res://assets/fonts/manrope/Manrope-SemiBold.ttf"
+dest_files=["res://.godot/imported/Manrope-SemiBold.ttf-af7dbfba7d3c9431c5fea0906eaeafff.fontdata"]
 
 [params]
 

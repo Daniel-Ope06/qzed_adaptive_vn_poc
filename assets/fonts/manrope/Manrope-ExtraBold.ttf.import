@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bjd7cswh7jw51"
-path="res://.godot/imported/Manrope-ExtraLight.ttf-4bb2003f9b80fd2fabca662b12ad8835.fontdata"
+uid="uid://c6ae12kf1m65i"
+path="res://.godot/imported/Manrope-ExtraBold.ttf-205da30f82bd2f760abe4aff1f42e82f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Manrope-ExtraLight.ttf"
-dest_files=["res://.godot/imported/Manrope-ExtraLight.ttf-4bb2003f9b80fd2fabca662b12ad8835.fontdata"]
+source_file="res://assets/fonts/manrope/Manrope-ExtraBold.ttf"
+dest_files=["res://.godot/imported/Manrope-ExtraBold.ttf-205da30f82bd2f760abe4aff1f42e82f.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://beskn5idyjrr5"
-path="res://.godot/imported/Manrope-Medium.ttf-52557eb6dffb87891d65316d7e9bd7b5.fontdata"
+path="res://.godot/imported/Manrope-Medium.ttf-90619514603e82f8cd3685dda263f036.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Manrope-Medium.ttf"
-dest_files=["res://.godot/imported/Manrope-Medium.ttf-52557eb6dffb87891d65316d7e9bd7b5.fontdata"]
+source_file="res://assets/fonts/manrope/Manrope-Medium.ttf"
+dest_files=["res://.godot/imported/Manrope-Medium.ttf-90619514603e82f8cd3685dda263f036.fontdata"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://s50ab4h6vned"]
 
-[ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/Manrope-Bold.ttf" id="1_0h7fy"]
-[ext_resource type="FontFile" uid="uid://ce1k7myu0ajho" path="res://assets/fonts/Manrope-VariableFont_wght.ttf" id="1_gaj8g"]
+[ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="1_0h7fy"]
+[ext_resource type="FontFile" uid="uid://ce1k7myu0ajho" path="res://assets/fonts/manrope/Manrope-VariableFont_wght.ttf" id="1_gaj8g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqorm"]
 content_margin_left = 12.0
