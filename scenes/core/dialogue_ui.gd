@@ -41,11 +41,11 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("ui_accept"):
 			_toggle_ui(true)
 
-func _toggle_ui(is_visible: bool) -> void:
+func _toggle_ui(show_ui: bool) -> void:
 	# Hide the text dialogue box and button row
-	dialogue_alignment.visible = is_visible
-	button_alignment.visible = is_visible
-	is_ui_hidden = !is_visible
+	dialogue_alignment.visible = show_ui
+	button_alignment.visible = show_ui
+	is_ui_hidden = !show_ui
 
 
 # --- UPDATE SPEAKER NAME ---
