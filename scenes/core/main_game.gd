@@ -5,6 +5,12 @@ extends Control
 
 
 func _ready() -> void:
+	# Custom mouse cursor
+	var puzzle_cursor = preload("res://assets/cursor.png")
+	var hotspot = Vector2(20, 8)
+	Input.set_custom_mouse_cursor(puzzle_cursor, Input.CURSOR_ARROW, hotspot)
+	Input.set_custom_mouse_cursor(puzzle_cursor, Input.CURSOR_POINTING_HAND, hotspot)
+	
 	# For testing purposes, use dispersion event cg.
 	var test_asset_path: String = "res://assets/cgs/cg_ch3_prism_dispersion.png"
 	visual_layer.display_scene(visual_layer.VisualType.EVENT_CG, test_asset_path)
