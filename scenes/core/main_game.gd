@@ -7,7 +7,7 @@ extends Control
 func _ready() -> void:
 	# Custom mouse cursor
 	var puzzle_cursor = preload("res://assets/cursor.png")
-	var hotspot = Vector2(20, 8)
+	var hotspot = Vector2(7, 2)
 	Input.set_custom_mouse_cursor(puzzle_cursor, Input.CURSOR_ARROW, hotspot)
 	Input.set_custom_mouse_cursor(puzzle_cursor, Input.CURSOR_POINTING_HAND, hotspot)
 	
