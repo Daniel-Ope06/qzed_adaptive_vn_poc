@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://jir1rqxdwha4"]
+
+[ext_resource type="Texture2D" uid="uid://b1p8x6aa6n2f1" path="res://assets/cgs/cg_ch3_prism_dispersion.png" id="1_nrrn2"]
+[ext_resource type="Texture2D" uid="uid://coi0tyq6dfqp1" path="res://assets/ui_icons/icon_sys_auto.png" id="2_pj3eg"]
+[ext_resource type="FontFile" uid="uid://ijvb12ayqv3f" path="res://assets/fonts/manrope/Manrope-SemiBold.ttf" id="3_pj3eg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrrn2"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.4392157, 0.8784314, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="StoryNode" type="PanelContainer" unique_id=886022900]
+custom_minimum_size = Vector2(400, 225)
+custom_maximum_size = Vector2(400, 225)
+offset_right = 400.0
+offset_bottom = 225.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrrn2")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1890782380]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("1_nrrn2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="StateIcon" type="TextureRect" parent="." unique_id=790366929]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_pj3eg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleBox" type="MarginContainer" parent="." unique_id=1656885644]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Title" type="Label" parent="TitleBox" unique_id=1711196902]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pj3eg")
+theme_override_font_sizes/font_size = 32
+text = "Title"
