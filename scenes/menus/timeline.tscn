@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cey7280a8s50b"]
+
+[node name="Timeline" type="ScrollContainer" unique_id=1749611884]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1729774446]
+layout_mode = 2
+
+[node name="LineCanvas" type="Control" parent="MarginContainer" unique_id=13911905]
+layout_mode = 2
+
+[node name="FlowLayout" type="HBoxContainer" parent="MarginContainer" unique_id=724031443]
+layout_mode = 2
