@@ -2,14 +2,30 @@
 
 [ext_resource type="Script" uid="uid://b4asj2eyxrsm7" path="res://scenes/menus/timeline.gd" id="1_v6bad"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6bad"]
+bg_color = Color(0.9764706, 0.9843137, 0.99215686, 1)
+
 [node name="Timeline" type="ScrollContainer" unique_id=1749611884]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6bad")
 script = ExtResource("1_v6bad")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1729774446]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="LineCanvas" type="Control" parent="MarginContainer" unique_id=13911905]
 layout_mode = 2
 
 [node name="FlowLayout" type="HBoxContainer" parent="MarginContainer" unique_id=724031443]
 layout_mode = 2
+theme_override_constants/separation = 128
