@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="qzed-adaptive-vn-poc"
-run/main_scene="uid://c0lxk5jxvr6h2"
+run/main_scene="uid://cey7280a8s50b"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://ce0wo4dguxvvv"
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalCursor="*uid://d2gwq6mnl11h1"
 
 [display]
 
