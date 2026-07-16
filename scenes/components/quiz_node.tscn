@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://blp4vxfiap24m"]
+
+[ext_resource type="Script" uid="uid://dc4mx783ks7yv" path="res://scenes/components/quiz_node.gd" id="1_hbgbt"]
+[ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="2_l6n3s"]
+
+[node name="QuizNode" type="MarginContainer" unique_id=199253620]
+custom_minimum_size = Vector2(175, 175)
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+script = ExtResource("1_hbgbt")
+
+[node name="DiamondCanvas" type="Control" parent="." unique_id=1829028967]
+layout_mode = 2
+
+[node name="TitleBox" type="CenterContainer" parent="." unique_id=33381846]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitleBox" unique_id=1123568418]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("2_l6n3s")
+theme_override_font_sizes/font_size = 32
