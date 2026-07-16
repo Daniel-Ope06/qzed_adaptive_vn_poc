@@ -2,6 +2,7 @@ extends ScrollContainer
 
 const STORY_NODE = preload("res://scenes/components/story_node.tscn")
 const QUIZ_NODE = preload("res://scenes/components/quiz_node.tscn")
+const CHAPTER_NODE = preload("res://scenes/components/chapter_node.tscn")
 
 @onready var flow_layout: HBoxContainer = $MarginContainer/FlowLayout
 @onready var line_canvas: Control = $MarginContainer/LineCanvas
@@ -19,29 +20,29 @@ var flowchart_data = [
 	},
 	{
 		"size": "one",
-		"type": "story",
-		"title": "Prologue",
-		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-		"state": StoryNode.NodeState.COMPLETED
+		"type": "chapter",
+		"number": 1,
+		"title": "Reflection & Refraction",
+		"state": ChapterNode.NodeState.UNLOCKED
 	},
 	{
 		"size": "many",
 		"nodes": [
 			{
 				"type": "story",
-				"title": "Story 1", 
+				"title": "Chapter 1A", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.UNLOCKED
 			},
 			{
 				"type": "story",
-				"title": "Story 2", 
+				"title": "Chapter 1B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			},
 			{
 				"type": "story",
-				"title": "Story 3", 
+				"title": "Chapter 1C", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			}
@@ -51,13 +52,86 @@ var flowchart_data = [
 		"size": "one",
 		"type": "quiz",
 		"title": "Q1",
-		"state": QuizNode.NodeState.UNLOCKED
+		"state": QuizNode.NodeState.LOCKED
+	},
+	{
+		"size": "one",
+		"type": "chapter",
+		"number": 2,
+		"title": "Total Internal Reflection",
+		"state": ChapterNode.NodeState.LOCKED
+	},
+	{
+		"size": "many",
+		"nodes": [
+			{
+				"type": "story",
+				"title": "Chapter 2A", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			},
+			{
+				"type": "story",
+				"title": "Chapter 2B", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			},
+			{
+				"type": "story",
+				"title": "Chapter 2C", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			}
+		]
 	},
 	{
 		"size": "one",
 		"type": "quiz",
 		"title": "Q2",
 		"state": QuizNode.NodeState.LOCKED
+	},
+	{
+		"size": "one",
+		"type": "chapter",
+		"number": 3,
+		"title": "Dispersion",
+		"state": ChapterNode.NodeState.LOCKED
+	},
+	{
+		"size": "many",
+		"nodes": [
+			{
+				"type": "story",
+				"title": "Chapter 3A", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			},
+			{
+				"type": "story",
+				"title": "Chapter 3B", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			},
+			{
+				"type": "story",
+				"title": "Chapter 3C", 
+				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"state": StoryNode.NodeState.LOCKED
+			}
+		]
+	},
+	{
+		"size": "one",
+		"type": "quiz",
+		"title": "Q3",
+		"state": QuizNode.NodeState.LOCKED
+	},
+	{
+		"size": "one",
+		"type": "story",
+		"title": "Epilogue",
+		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+		"state": StoryNode.NodeState.LOCKED
 	},
 ]
 
@@ -105,13 +179,11 @@ func instantiate_by_type(parent: Control, data: Dictionary) -> Control:
 		new_quiz.setup_node(data["title"], data["state"])
 		return new_quiz
 	
-	else:
-		# Default back to StoryNode setup
-		var new_story = STORY_NODE.instantiate()
-		parent.add_child(new_story)
-		var image = load(data["image"]) as Texture2D
-		new_story.setup_node(data["title"], image, data["state"])
-		return new_story
+	else: # if "chapter"
+		var new_chapter = CHAPTER_NODE.instantiate()
+		parent.add_child(new_chapter)
+		new_chapter.setup_node(data["number"], data["title"], data["state"])
+		return new_chapter
 
 func draw_connections() -> void:
 	var paths_to_draw: Array = []
