@@ -10,19 +10,19 @@ const COLOR_LINE_INACTIVE = Color("#D6D6D6") # Grey
 
 var flowchart_data = [
 	{
-		"type": "single",
+		"size": "one",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.COMPLETED
 	},
 	{
-		"type": "single",
+		"size": "one",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.COMPLETED
 	},
 	{
-		"type": "split",
+		"size": "many",
 		"nodes": [
 			{
 				"title": "Story 1", 
@@ -42,7 +42,7 @@ var flowchart_data = [
 		]
 	},
 	{
-		"type": "single",
+		"size": "one",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.LOCKED
@@ -60,13 +60,13 @@ func build_timeline() -> void:
 	for step in flowchart_data:
 		var step_nodes: Array = []
 		
-		if step["type"] == "single":
+		if step["size"] == "one":
 			var image = load(step["image"]) as Texture2D
 			var node = create_story_node(flow_layout, step["title"], image, step["state"])
 			node.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			step_nodes.append(node)
 		
-		elif step["type"] == "split":
+		elif step["size"] == "many":
 			var column = VBoxContainer.new()
 			column.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			column.add_theme_constant_override("separation", 64)
@@ -92,7 +92,7 @@ func draw_connections() -> void:
 		var current_nodes: Array = tracked_steps[i]
 		var next_nodes: Array = tracked_steps[i+1]
 		
-		# RELATIONSHIP 1: 1-to-1 (Single to Single)
+		# RELATIONSHIP 1: one to one
 		if current_nodes.size() == 1 and next_nodes.size() == 1:
 			var start = get_node_right_center(current_nodes[0])
 			var end = get_node_left_center(next_nodes[0])
@@ -100,10 +100,10 @@ func draw_connections() -> void:
 			
 			paths_to_draw.append({
 				"start": start, "end": end, 
-				"is_active": is_active, "type": "straight"
+				"is_active": is_active, "connection": "straight"
 			})
 		
-		# RELATIONSHIP 2: 1-to-3 (Single to Split)
+		# RELATIONSHIP 2: one to many
 		elif current_nodes.size() == 1 and next_nodes.size() > 1:
 			var start = get_node_right_center(current_nodes[0])
 			for target_node in next_nodes:
@@ -111,10 +111,10 @@ func draw_connections() -> void:
 				var is_active = (target_node.current_state != StoryNode.NodeState.LOCKED)
 				paths_to_draw.append({
 					"start": start, "end": end, 
-					"is_active": is_active, "type": "fork"
+					"is_active": is_active, "connection": "fork"
 				})
 		
-		# RELATIONSHIP 3: 3-to-1 (Split to Single)
+		# RELATIONSHIP 3: many to one
 		elif current_nodes.size() > 1 and next_nodes.size() == 1:
 			var end = get_node_left_center(next_nodes[0])
 			var is_active = (next_nodes[0].current_state != StoryNode.NodeState.LOCKED)
@@ -123,7 +123,7 @@ func draw_connections() -> void:
 				
 				paths_to_draw.append({
 					"start": start, "end": end, 
-					"is_active": is_active, "type": "fork"
+					"is_active": is_active, "connection": "fork"
 				})
 	
 	# Draw every INACTIVE (Grey) line at the bottom layer
@@ -161,13 +161,13 @@ func draw_specific_path(path: Dictionary) -> void:
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
 	
-	if path["type"] == "straight":
+	if path["connection"] == "straight":
 		# A straight line with an arrowhead
 		line.add_point(start)
 		line.add_point(end)
 		add_arrow_head(end, start, line.default_color)
 		
-	elif path["type"] == "fork":
+	elif path["connection"] == "fork":
 		# An orthogonal 4-point routing with no arrowhead
 		var mid_x = (start.x + end.x) / 2.0
 		line.add_point(start)
