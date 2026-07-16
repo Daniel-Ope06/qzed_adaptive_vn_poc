@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c6wf2rad08cbl"]
+
+[ext_resource type="Script" uid="uid://che8qq21vco34" path="res://scenes/components/chapter_node.gd" id="1_jse0c"]
+[ext_resource type="FontFile" uid="uid://c6ae12kf1m65i" path="res://assets/fonts/manrope/Manrope-ExtraBold.ttf" id="1_lr7f7"]
+[ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="2_cyvah"]
+
+[node name="ChapterNode" type="MarginContainer" unique_id=375594982]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+script = ExtResource("1_jse0c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=140139101]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Number" type="Label" parent="VBoxContainer" unique_id=1165761177]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lr7f7")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=974391404]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cyvah")
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
