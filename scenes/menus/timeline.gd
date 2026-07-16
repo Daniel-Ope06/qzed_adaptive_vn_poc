@@ -43,7 +43,7 @@ var flowchart_data = [
 				"type": "story",
 				"title": "Story 3", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-				"state": StoryNode.NodeState.COMPLETED
+				"state": StoryNode.NodeState.LOCKED
 			}
 		]
 	},
@@ -51,6 +51,12 @@ var flowchart_data = [
 		"size": "one",
 		"type": "quiz",
 		"title": "Q1",
+		"state": QuizNode.NodeState.UNLOCKED
+	},
+	{
+		"size": "one",
+		"type": "quiz",
+		"title": "Q2",
 		"state": QuizNode.NodeState.LOCKED
 	},
 ]
@@ -118,7 +124,7 @@ func draw_connections() -> void:
 		if current_nodes.size() == 1 and next_nodes.size() == 1:
 			var start = get_node_right_center(current_nodes[0])
 			var end = get_node_left_center(next_nodes[0])
-			var is_active = (next_nodes[0].current_state != StoryNode.NodeState.LOCKED)
+			var is_active = next_nodes[0].is_active_path()
 			
 			paths_to_draw.append({
 				"start": start, "end": end, 
@@ -130,7 +136,7 @@ func draw_connections() -> void:
 			var start = get_node_right_center(current_nodes[0])
 			for target_node in next_nodes:
 				var end = get_node_left_center(target_node)
-				var is_active = (target_node.current_state != StoryNode.NodeState.LOCKED)
+				var is_active = target_node.is_active_path()
 				paths_to_draw.append({
 					"start": start, "end": end, 
 					"is_active": is_active, "connection": "fork"
@@ -139,9 +145,9 @@ func draw_connections() -> void:
 		# RELATIONSHIP 3: many to one
 		elif current_nodes.size() > 1 and next_nodes.size() == 1:
 			var end = get_node_left_center(next_nodes[0])
-			var is_active = (next_nodes[0].current_state != StoryNode.NodeState.LOCKED)
 			for origin_node in current_nodes:
 				var start = get_node_right_center(origin_node)
+				var is_active = origin_node.is_active_path() and next_nodes[0].is_active_path()
 				
 				paths_to_draw.append({
 					"start": start, "end": end, 
