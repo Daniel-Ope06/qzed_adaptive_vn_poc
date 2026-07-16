@@ -1,6 +1,7 @@
 extends ScrollContainer
 
 const STORY_NODE = preload("res://scenes/components/story_node.tscn")
+const QUIZ_NODE = preload("res://scenes/components/quiz_node.tscn")
 
 @onready var flow_layout: HBoxContainer = $MarginContainer/FlowLayout
 @onready var line_canvas: Control = $MarginContainer/LineCanvas
@@ -11,12 +12,14 @@ const COLOR_LINE_INACTIVE = Color("#D6D6D6") # Grey
 var flowchart_data = [
 	{
 		"size": "one",
+		"type": "story",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.COMPLETED
 	},
 	{
 		"size": "one",
+		"type": "story",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.COMPLETED
@@ -25,16 +28,19 @@ var flowchart_data = [
 		"size": "many",
 		"nodes": [
 			{
+				"type": "story",
 				"title": "Story 1", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.UNLOCKED
 			},
 			{
+				"type": "story",
 				"title": "Story 2", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			},
 			{
+				"type": "story",
 				"title": "Story 3", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.COMPLETED
@@ -43,13 +49,13 @@ var flowchart_data = [
 	},
 	{
 		"size": "one",
-		"title": "Prologue",
-		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-		"state": StoryNode.NodeState.LOCKED
+		"type": "quiz",
+		"title": "Q1",
+		"state": QuizNode.NodeState.LOCKED
 	},
 ]
 
-var tracked_steps: Array = []
+var tracked_nodes: Array = []
 
 func _ready() -> void:
 	build_timeline()
@@ -57,40 +63,56 @@ func _ready() -> void:
 	draw_connections()
 
 func build_timeline() -> void:
-	for step in flowchart_data:
-		var step_nodes: Array = []
+	for entity in flowchart_data:
+		var entity_nodes: Array = []
 		
-		if step["size"] == "one":
-			var image = load(step["image"]) as Texture2D
-			var node = create_story_node(flow_layout, step["title"], image, step["state"])
+		if entity["size"] == "one":
+			var node = instantiate_by_type(flow_layout, entity)
 			node.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-			step_nodes.append(node)
+			entity_nodes.append(node)
 		
-		elif step["size"] == "many":
+		elif entity["size"] == "many":
 			var column = VBoxContainer.new()
 			column.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			column.add_theme_constant_override("separation", 64)
 			flow_layout.add_child(column)
 			
-			for sub_step in step["nodes"]:
-				var image = load(sub_step["image"]) as Texture2D
-				var node = create_story_node(column, sub_step["title"], image, sub_step["state"])
-				step_nodes.append(node)
+			for sub_entity in entity["nodes"]:
+				var node = instantiate_by_type(column, sub_entity)
+				entity_nodes.append(node)
 		
-		tracked_steps.append(step_nodes)
+		tracked_nodes.append(entity_nodes)
 
-func create_story_node(parent_container: Control,node_title: String, node_image: Texture2D, node_state: StoryNode.NodeState) -> StoryNode:
-	var new_node = STORY_NODE.instantiate()
-	parent_container.add_child(new_node)
-	new_node.setup_node(node_title, node_image, node_state) 
-	return new_node
+func instantiate_by_type(parent: Control, data: Dictionary) -> Control:
+	var node_type = data.get("type")
+	
+	if node_type == "story":
+		var new_story = STORY_NODE.instantiate()
+		parent.add_child(new_story)
+		var image = load(data["image"]) as Texture2D
+		new_story.setup_node(data["title"], image, data["state"])
+		return new_story
+	
+	elif node_type == "quiz":
+		var new_quiz = QUIZ_NODE.instantiate()
+		parent.add_child(new_quiz)
+		new_quiz.setup_node(data["title"], data["state"])
+		return new_quiz
+	
+	else:
+		# Default back to StoryNode setup
+		var new_story = STORY_NODE.instantiate()
+		parent.add_child(new_story)
+		var image = load(data["image"]) as Texture2D
+		new_story.setup_node(data["title"], image, data["state"])
+		return new_story
 
 func draw_connections() -> void:
 	var paths_to_draw: Array = []
 	
-	for i in range(tracked_steps.size() - 1):
-		var current_nodes: Array = tracked_steps[i]
-		var next_nodes: Array = tracked_steps[i+1]
+	for i in range(tracked_nodes.size() - 1):
+		var current_nodes: Array = tracked_nodes[i]
+		var next_nodes: Array = tracked_nodes[i+1]
 		
 		# RELATIONSHIP 1: one to one
 		if current_nodes.size() == 1 and next_nodes.size() == 1:
