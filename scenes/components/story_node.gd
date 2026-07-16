@@ -44,3 +44,6 @@ func set_state(new_state: NodeState) -> void:
 			node_icon.show()
 			node_image.modulate.a = 0.8
 			panel_style.border_color = COLOR_UNLOCKED
+
+func is_active_path() -> bool:
+	return current_state != NodeState.LOCKED

@@ -18,8 +18,21 @@ func _ready() -> void:
 func setup_node(title: String, state: NodeState = NodeState.UNLOCKED) -> void:
 	node_title = title
 	quiz_title.text = title
-	current_state = state
+	set_state(state)
+
+func set_state(new_state: NodeState) -> void:
+	current_state = new_state
+	
+	match current_state:
+		NodeState.LOCKED:
+			quiz_title.add_theme_color_override("font_color", COLOR_LOCKED)
+		NodeState.UNLOCKED:
+			quiz_title.add_theme_color_override("font_color", Color("#0A0A0A"))
+	
 	diamond_canvas.queue_redraw()
+
+func is_active_path() -> bool:
+	return current_state != NodeState.LOCKED
 
 # Drawing Diamond
 func _on_canvas_draw() -> void:
@@ -36,8 +49,8 @@ func _on_canvas_draw() -> void:
 	])
 	
 	# Fill the inside to cover background lines
-	diamond_canvas.draw_polygon(points, PackedColorArray([Color.WHITE]))
+	diamond_canvas.draw_polygon(points, PackedColorArray([Color("#F9FBFD") if current_state == NodeState.LOCKED else Color.WHITE]))
 	
 	# Draw the outer border line
 	var current_border_color = COLOR_LOCKED if current_state == NodeState.LOCKED else COLOR_UNLOCKED
-	diamond_canvas.draw_polyline(points, current_border_color, 2, true)
+	diamond_canvas.draw_polyline(points, current_border_color, 4, true)
