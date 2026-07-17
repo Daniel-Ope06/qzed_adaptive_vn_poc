@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name StoryNode
 
+signal node_selected(id: String)
+
 enum NodeState { LOCKED, UNLOCKED, COMPLETED }
 
 const ICON_LOCK = preload("res://assets/ui_icons/icon_tl_lock.png")
@@ -14,12 +16,14 @@ const COLOR_UNLOCKED: Color = Color("#0070E0") # Blue
 
 var current_state: NodeState = NodeState.LOCKED
 var panel_style: StyleBoxFlat
+var node_id: String
 
 func _ready() -> void:
 	panel_style = get_theme_stylebox("panel").duplicate()
 	add_theme_stylebox_override("panel", panel_style)
 
-func setup_node(title: String, image: Texture2D, state: NodeState = NodeState.LOCKED) -> void:
+func setup_node(story_id: String, title: String, image: Texture2D, state: NodeState = NodeState.LOCKED) -> void:
+	node_id = story_id
 	node_title.text = title
 	node_image.texture = image
 	set_state(state)
@@ -47,3 +51,9 @@ func set_state(new_state: NodeState) -> void:
 
 func is_active_path() -> bool:
 	return current_state != NodeState.LOCKED
+
+func _gui_input(event: InputEvent) -> void:
+	if current_state == NodeState.LOCKED:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		node_selected.emit(node_id)
