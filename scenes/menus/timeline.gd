@@ -21,8 +21,8 @@ var flowchart_data = [
 	{
 		"size": "one",
 		"type": "chapter",
-		"number": 1,
-		"title": "Reflection & Refraction",
+		"title": "THE RESCUE",
+		"subtitle": "Reflection & Refraction",
 		"state": ChapterNode.NodeState.UNLOCKED
 	},
 	{
@@ -39,12 +39,6 @@ var flowchart_data = [
 				"title": "Chapter 1B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
-			},
-			{
-				"type": "story",
-				"title": "Chapter 1C", 
-				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-				"state": StoryNode.NodeState.LOCKED
 			}
 		]
 	},
@@ -57,8 +51,8 @@ var flowchart_data = [
 	{
 		"size": "one",
 		"type": "chapter",
-		"number": 2,
-		"title": "Total Internal Reflection",
+		"title": "CHAPTER 2",
+		"subtitle": "Total Internal Reflection",
 		"state": ChapterNode.NodeState.LOCKED
 	},
 	{
@@ -75,12 +69,6 @@ var flowchart_data = [
 				"title": "Chapter 2B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
-			},
-			{
-				"type": "story",
-				"title": "Chapter 2C", 
-				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-				"state": StoryNode.NodeState.LOCKED
 			}
 		]
 	},
@@ -93,8 +81,8 @@ var flowchart_data = [
 	{
 		"size": "one",
 		"type": "chapter",
-		"number": 3,
-		"title": "Dispersion",
+		"title": "CHAPTER 3",
+		"subtitle": "Dispersion",
 		"state": ChapterNode.NodeState.LOCKED
 	},
 	{
@@ -109,12 +97,6 @@ var flowchart_data = [
 			{
 				"type": "story",
 				"title": "Chapter 3B", 
-				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-				"state": StoryNode.NodeState.LOCKED
-			},
-			{
-				"type": "story",
-				"title": "Chapter 3C", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			}
@@ -182,7 +164,7 @@ func instantiate_by_type(parent: Control, data: Dictionary) -> Control:
 	else: # if "chapter"
 		var new_chapter = CHAPTER_NODE.instantiate()
 		parent.add_child(new_chapter)
-		new_chapter.setup_node(data["number"], data["title"], data["state"])
+		new_chapter.setup_node(data["title"], data["subtitle"], data["state"])
 		return new_chapter
 
 func draw_connections() -> void:

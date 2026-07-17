@@ -13,13 +13,13 @@ script = ExtResource("1_jse0c")
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Number" type="Label" parent="VBoxContainer" unique_id=1165761177]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1165761177]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lr7f7")
 theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=974391404]
+[node name="Subtitle" type="Label" parent="VBoxContainer" unique_id=974391404]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_cyvah")
 theme_override_font_sizes/font_size = 38
