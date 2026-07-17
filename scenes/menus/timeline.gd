@@ -14,9 +14,10 @@ var flowchart_data = [
 	{
 		"size": "one",
 		"type": "story",
+		"story_id": "",
 		"title": "Prologue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
-		"state": StoryNode.NodeState.COMPLETED
+		"state": StoryNode.NodeState.LOCKED
 	},
 	{
 		"size": "one",
@@ -30,12 +31,14 @@ var flowchart_data = [
 		"nodes": [
 			{
 				"type": "story",
+				"story_id": "chapter_1a",
 				"title": "Chapter 1A", 
-				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
+				"image": "res://assets/cg_static/quinn_trapped.webp",
 				"state": StoryNode.NodeState.UNLOCKED
 			},
 			{
 				"type": "story",
+				"story_id": "",
 				"title": "Chapter 1B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
@@ -60,12 +63,14 @@ var flowchart_data = [
 		"nodes": [
 			{
 				"type": "story",
+				"story_id": "",
 				"title": "Chapter 2A", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			},
 			{
 				"type": "story",
+				"story_id": "",
 				"title": "Chapter 2B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
@@ -90,12 +95,14 @@ var flowchart_data = [
 		"nodes": [
 			{
 				"type": "story",
+				"story_id": "",
 				"title": "Chapter 3A", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
 			},
 			{
 				"type": "story",
+				"story_id": "",
 				"title": "Chapter 3B", 
 				"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 				"state": StoryNode.NodeState.LOCKED
@@ -111,6 +118,7 @@ var flowchart_data = [
 	{
 		"size": "one",
 		"type": "story",
+		"story_id": "",
 		"title": "Epilogue",
 		"image": "res://assets/cgs/cg_ch3_prism_dispersion.png",
 		"state": StoryNode.NodeState.LOCKED
@@ -152,7 +160,7 @@ func instantiate_by_type(parent: Control, data: Dictionary) -> Control:
 		var new_story = STORY_NODE.instantiate()
 		parent.add_child(new_story)
 		var image = load(data["image"]) as Texture2D
-		new_story.setup_node(data["title"], image, data["state"])
+		new_story.setup_node(data["story_id"], data["title"], image, data["state"])
 		return new_story
 	
 	elif node_type == "quiz":
