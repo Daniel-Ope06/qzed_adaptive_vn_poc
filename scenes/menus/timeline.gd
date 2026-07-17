@@ -161,6 +161,7 @@ func instantiate_by_type(parent: Control, data: Dictionary) -> Control:
 		parent.add_child(new_story)
 		var image = load(data["image"]) as Texture2D
 		new_story.setup_node(data["story_id"], data["title"], image, data["state"])
+		new_story.node_selected.connect(_on_story_node_selected)
 		return new_story
 	
 	elif node_type == "quiz":
@@ -227,7 +228,7 @@ func draw_connections() -> void:
 			draw_specific_path(path)
 
 
-# -- HELPER FUNCTIONS --
+# ---------------------- HELPER FUNCTIONS ----------------------
 
 func get_node_right_center(node: Control) -> Vector2:
 	var pos = node.global_position - line_canvas.global_position
@@ -285,3 +286,10 @@ func add_arrow_head(at_position: Vector2, look_back_at: Vector2, head_color: Col
 	var base_right = at_position - (direction * arrow_length) - (perpendicular * (arrow_width / 2.0))
 	
 	arrow.polygon = PackedVector2Array([tip, base_left, base_right])
+
+
+# ---------------------- SIGNAL HANDLING ----------------------
+
+func _on_story_node_selected(story_id: String) -> void:
+	GameManager.current_story_id = story_id
+	get_tree().change_scene_to_file("res://scenes/core/main_game.tscn")
