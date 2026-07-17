@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cm4onbx52xryb"]
+
+[ext_resource type="Texture2D" uid="uid://ctakew47kiude" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0000.webp" id="1_xch36"]
+[ext_resource type="Texture2D" uid="uid://cyc8vbb1bacww" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0001.webp" id="2_yui4i"]
+[ext_resource type="Texture2D" uid="uid://t2sixh0c0gc5" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0002.webp" id="3_x4ta0"]
+[ext_resource type="Texture2D" uid="uid://infwx0tl627n" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0003.webp" id="4_dlqhp"]
+[ext_resource type="Texture2D" uid="uid://bg7h0v4ft338g" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0004.webp" id="5_sxw7b"]
+[ext_resource type="Texture2D" uid="uid://3dgvmjb1gofx" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0005.webp" id="6_xppx2"]
+[ext_resource type="Texture2D" uid="uid://ba51q1hokwsv3" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0006.webp" id="7_chl7j"]
+[ext_resource type="Texture2D" uid="uid://cocnljo2k5gyp" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0007.webp" id="8_cgxk8"]
+[ext_resource type="Texture2D" uid="uid://da2tr8tgfhikb" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0008.webp" id="9_syj8k"]
+[ext_resource type="Texture2D" uid="uid://200806k8hpwk" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0009.webp" id="10_icbmb"]
+[ext_resource type="Texture2D" uid="uid://eop5573blkdu" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0010.webp" id="11_x3iog"]
+[ext_resource type="Texture2D" uid="uid://c2qweiq5c4f0u" path="res://assets/cg_animated/split_ella_in_cockpit_to_quinn_trapped/Timeline 1_0011.webp" id="12_t3aod"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xch36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yui4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x4ta0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dlqhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sxw7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xppx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_chl7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cgxk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_syj8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_icbmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x3iog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t3aod")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
