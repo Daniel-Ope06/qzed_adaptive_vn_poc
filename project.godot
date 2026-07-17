@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 GlobalCursor="*uid://d2gwq6mnl11h1"
 GameManager="*uid://dxb7iaeichbpu"
+AssetRegistry="*uid://pfbjfwe3drob"
 
 [display]
 
