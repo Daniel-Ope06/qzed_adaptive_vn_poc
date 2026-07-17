@@ -1,0 +1,34 @@
+{
+	"chapter_id": "1a",
+	"blocks": {
+		"scene_1": {
+			"type": "static_cg",
+			"background": "quinn_trapped",
+			"next_block": "scene_2"
+		},
+		"scene_2": {
+			"type": "static_cg",
+			"background": "ella_in_cockpit",
+			"next_block": "scene_3"
+		},
+		"scene_3": {
+			"type": "animated_cg",
+			"background": "split_ella_in_cockpit_to_quinn_trapped",
+			"dialogue": [
+				{
+					"speaker": "Quinn",
+					"text": "Ella, I'm blind down here! The emergency cells are dead. I can't see the manual override wheel to open this hatch!"
+				},
+				{
+					"speaker": "Ella",
+					"text": "Calm down, Quinn. We still have the primary optical routing beam active from the main deck. It's striking the bulkhead mirror right above your shaft. We just need to redirect it down to you."
+				},
+				{
+					"speaker": "Quinn",
+					"text": "(Listening inside the dark shaft)"
+				}
+			],
+			"next_block": "stop"
+		}
+	}
+}
