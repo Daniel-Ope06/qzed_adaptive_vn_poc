@@ -33,6 +33,7 @@ script = ExtResource("1_ws086")
 [node name="ImageMask" type="Panel" parent="." unique_id=1352063458]
 clip_children = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ql73s")
 
 [node name="Background" type="TextureRect" parent="ImageMask" unique_id=1890782380]
@@ -42,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
@@ -52,12 +54,14 @@ custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TitleBox" type="MarginContainer" parent="." unique_id=1656885644]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_bottom = 4
 
