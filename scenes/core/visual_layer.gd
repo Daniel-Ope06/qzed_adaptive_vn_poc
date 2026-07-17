@@ -1,5 +1,7 @@
 extends Control
 
+signal animation_finished
+
 enum VisualType {
 	STATIC_CG,
 	ANIMATED_CG,
@@ -56,3 +58,5 @@ func _show_animated_cg(cg_path: String) -> void:
 		# Wait for the next frame (unless it is the final frame)
 		if i < frame_count - 1:
 			await get_tree().create_timer(frame_delay).timeout
+	
+	animation_finished.emit()

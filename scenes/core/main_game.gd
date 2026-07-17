@@ -1,32 +1,52 @@
 extends Control
 
-const CHAR_STYLES = {
-	"Quinn": {
-		"bg_color": Color("#F57A00"), 
-		"font_color": Color("#FFF5EB")
-	},
-	"Zach": {
-		"bg_color": Color("#99CCFF"), 
-		"font_color": Color("#003D7A")
-	},
-	"Ella": {
-		"bg_color": Color("#fd6969"), 
-		"font_color": Color("#7d2d16")
-	},
-	"Daniel": {
-		"bg_color": Color("#428e2c"), 
-		"font_color": Color("#74c84f")
-	},
-	# A fallback for a narrator or an unknown speaker
-	"System": {
-		"bg_color": Color("#525252"),
-		"font_color": Color("#F5F5F5")
-	}
-}
-
 @onready var visual_layer: Control = $VisualLayer
 @onready var dialogue_ui = $UILayer/DialogueUI
 
+var story_data: Dictionary = {}
+var current_block: Dictionary = {}
+var waiting_for_next_click: bool = false
 
 func _ready() -> void:
-	pass
+	dialogue_ui.dialogue_finished.connect(_on_dialogue_finished)
+	
+	var active_story_id = GameManager.current_story_id
+	if active_story_id == "":
+		push_error("Main Game: Launched without a valid story ID")
+		return
+	
+	var file_path = "res://data/story/%s.json" % active_story_id
+	if not FileAccess.file_exists(file_path):
+		push_error("Main Game: Story file not found at " + file_path)
+		return
+	
+	var file_text = FileAccess.get_file_as_string(file_path)
+	story_data = JSON.parse_string(file_text)
+	play_block("scene_1")
+
+func play_block(block_id: String) -> void:
+	if block_id == "stop":
+		return
+	
+	current_block = story_data["blocks"][block_id]
+	dialogue_ui.toggle_dialogue_box(false) # Hide dialogue box
+	waiting_for_next_click = false
+	
+	var cg_type = current_block["type"]
+	var bg_id = current_block["background"]
+	var asset_path = AssetRegistry.get_cg_path(bg_id)
+	
+	if cg_type == "static_cg":
+		visual_layer.display_scene(visual_layer.VisualType.STATIC_CG, asset_path)
+	elif cg_type == "animated_cg":
+		visual_layer.display_scene(visual_layer.VisualType.ANIMATED_CG, asset_path)
+		await visual_layer.animation_finished
+	
+	var dialogue: Array = current_block.get("dialogue", [])
+	if dialogue.size() > 0:
+		dialogue_ui.start_dialogue(dialogue)
+	else:
+		waiting_for_next_click = true
+
+func _on_dialogue_finished() -> void:
+	play_block(current_block["next_block"])
