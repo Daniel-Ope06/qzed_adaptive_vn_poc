@@ -9,6 +9,8 @@ const CG_REGISTRY: Dictionary = {
 	"spaceship_hallway_light": "res://assets/cg_static/spaceship_hallway_light.webp",
 	"reflection_explained_gray": "res://assets/cg_static/reflection_explained_gray.webp",
 	"reflection_explained_color": "res://assets/cg_static/reflection_explained_color.webp",
+	"spaceship_hallway_wrong": "res://assets/cg_animated/spaceship_hallway_wrong.tres",
+	"spaceship_hallway_right": "res://assets/cg_animated/spaceship_hallway_right.tres",
 }
 
 const SPRITE_REGISTRY: Dictionary = {
