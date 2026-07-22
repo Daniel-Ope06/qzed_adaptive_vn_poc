@@ -27,6 +27,7 @@ const CHAR_STYLES = {
 @onready var dialogue_text: RichTextLabel = $MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row/DialogueText
 @onready var hide_ui_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row2/HideUIButton
 @onready var next_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/NextButton
+@onready var timeline_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/TimelineButton
 
 # Choice Node
 @onready var choice_template = $MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate
@@ -62,6 +63,7 @@ func start_dialogue(dialogue_array: Array, choices_array: Array = []) -> void:
 	# Reset UI for new scene
 	choice_alignment.hide()
 	next_button.show()
+	timeline_button.show()
 	_clear_old_choices()
 	
 	_display_current_line()
@@ -172,6 +174,7 @@ func _clear_old_choices() -> void:
 
 func _show_choices() -> void:
 	next_button.hide()
+	timeline_button.hide()
 	choice_alignment.show()
 	
 	for choice in current_choices:

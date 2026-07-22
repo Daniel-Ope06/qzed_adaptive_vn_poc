@@ -7,10 +7,10 @@
 [ext_resource type="StyleBox" uid="uid://0ccka055wd01" path="res://assets/ui_textures/text_box.tres" id="3_lrxjj"]
 [ext_resource type="Texture2D" uid="uid://c8oevxpo6t6cp" path="res://assets/ui_icons/icon_sys_next.png" id="4_oqorm"]
 [ext_resource type="Texture2D" uid="uid://dwjvep6r0t73a" path="res://assets/ui_icons/icon_sys_dictionary.png" id="4_q4xhs"]
-[ext_resource type="Texture2D" uid="uid://coi0tyq6dfqp1" path="res://assets/ui_icons/icon_sys_auto.png" id="4_udopk"]
 [ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="6_r5j0u"]
 [ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
 [ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
+[ext_resource type="Texture2D" uid="uid://kodxhxi3bflg" path="res://assets/ui_icons/icon_sys_timeline.png" id="8_r5j0u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4xhs"]
 content_margin_left = 8.0
@@ -195,12 +195,10 @@ alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="AutoButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row1" unique_id=598215608]
-visible = false
+[node name="TimelineButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row1" unique_id=598215608]
 layout_mode = 2
-toggle_mode = true
-text = "Auto"
-icon = ExtResource("4_udopk")
+text = "Timeline"
+icon = ExtResource("8_r5j0u")
 
 [node name="NextButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row1" unique_id=1480766964]
 layout_mode = 2
