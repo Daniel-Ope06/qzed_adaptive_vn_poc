@@ -4,11 +4,23 @@
 		"scene_1": {
 			"type": "static_cg",
 			"background": "quinn_trapped",
+			"dialogue":[
+				{
+					"speaker": "Quinn",
+					"text": "Ella, I'm blind down here!"
+				}
+			],
 			"next_block": "scene_2"
 		},
 		"scene_2": {
 			"type": "static_cg",
 			"background": "ella_in_cockpit",
+			"dialogue":[
+				{
+					"speaker": "Ella",
+					"text": "Hmmm... Where are you?"
+				}
+			],
 			"next_block": "scene_3"
 		},
 		"scene_3": {
@@ -17,18 +29,123 @@
 			"dialogue": [
 				{
 					"speaker": "Quinn",
-					"text": "Ella, I'm blind down here! The emergency cells are dead. I can't see the manual override wheel to open this hatch!"
-				},
-				{
-					"speaker": "Ella",
-					"text": "Calm down, Quinn. We still have the primary optical routing beam active from the main deck. It's striking the bulkhead mirror right above your shaft. We just need to redirect it down to you."
+					"text": "I was checking out an alarming sound I heard in the maintenance room before the ship went down."
 				},
 				{
 					"speaker": "Quinn",
-					"text": "(Listening inside the dark shaft)"
+					"text": "The emergency cells are dead. I can't see the manual override wheel to open this hatch!"
+				}
+			],
+			"next_block": "scene_4a"
+		},
+		"scene_4a": {
+			"type": "dialogue_cg",
+			"background": "spaceship_hallway",
+			"sprites": {
+				"left": "ella_space_explaining"
+			},
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "Calm down, Quinn. We still have the primary optical routing beam active from the main deck."
+				},
+			],
+			"next_block": "scene_4b"
+		},
+		"scene_4b": {
+			"type": "dialogue_cg",
+			"background": "spaceship_hallway_light",
+			"sprites": {
+				"left": "ella_space_explaining"
+			},
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "It's striking the bulkhead mirror right above your shaft. We just need to redirect it down to you."
+				},
+				{
+					"speaker": "Ella",
+					"text": "To bounce this beam down into Quinn's hatch, we need to adjust the mirror angle."
+				}
+			],
+			"next_block": "scene_4c"
+		},
+		"scene_4c": {
+			"type": "static_cg",
+			"background": "reflection_explained_color",
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "But remember your foundational optical tracking: light isn't random. It treats a flat mirror surface with perfect geometric symmetry."
+				}
+			],
+			"next_block": "scene_5"
+		},
+		"scene_5": {
+			"type": "static_cg",
+			"background": "reflection_explained_gray",
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "How do you calculate the trajectory of the beam reflecting off the mirror to guide it toward the conduit window?"
+				}
+			],
+			"choices": [
+				{
+					"text": "Calculate using the mirror surface.",
+					"next_block": "scene_6a"
+				},
+				{
+					"text": "Establish the 'Normal Line'.",
+					"next_block": "scene_6b"
+				}
+			]
+		},
+		"scene_6a": {
+			"type": "animated_cg",
+			"background": "spaceship_hallway_wrong",
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "Whoa! You almost cooked the secondary backup cells! The beam missed the window completely."
+				},
+				{
+					"speaker": "Ella",
+					"text": "You measured from the wrong baseline."
+				},
+				{
+					"speaker": "Ella",
+					"text": "In optics, we always measure angles from the [color=#FF7F00][url=normal_line_def]Normal Line[/url][/color]."
+				},
+				{
+					"speaker": "Ella",
+					"text": "Because the angle of incidence equals the angle of reflection relative to that normal, your math just threw the beam entirely off target."
+				},
+				{
+					"speaker": "Ella",
+					"text": "Let's reset and look at the normal line."
+				}
+			],
+			"next_block": "scene_5"
+		},
+		"scene_6b": {
+			"type": "animated_cg",
+			"background": "spaceship_hallway_right",
+			"dialogue": [
+				{
+					"speaker": "Quinn",
+					"text": "Perfect! The light is hitting the window right above me."
+				},
+				{
+					"speaker": "Quinn",
+					"text": "But... wait. It’s not reaching the hatch."
+				},
+				{
+					"speaker": "Quinn",
+					"text": "The glass is bending the beam away from the hatch!"
 				}
 			],
 			"next_block": "stop"
-		}
+		},
 	}
 }
