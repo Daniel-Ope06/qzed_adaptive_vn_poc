@@ -41,6 +41,9 @@ func play_block(block_id: String) -> void:
 	elif cg_type == "animated_cg":
 		visual_layer.display_scene(visual_layer.VisualType.ANIMATED_CG, asset_path)
 		await visual_layer.animation_finished
+	elif cg_type == "dialogue_cg":
+		var sprite_slots = current_block.get("sprites", {})
+		visual_layer.display_scene(visual_layer.VisualType.DIALOGUE_CG, asset_path, sprite_slots)
 	
 	var dialogue: Array = current_block.get("dialogue", [])
 	if dialogue.size() > 0:
