@@ -1,6 +1,7 @@
 extends MarginContainer
 
 signal dialogue_finished
+signal choice_selected(next_block: String)
 
 const CHAR_STYLES = {
 	"Quinn": {"bg_color": Color("#F57A00"), "font_color": Color("#FFF5EB")},
@@ -13,6 +14,7 @@ const CHAR_STYLES = {
 
 # --- SCENE TREE REFERENCES ---
 @onready var main_stack: VBoxContainer = $MainStack
+@onready var choice_alignment: VBoxContainer = $MainStack/TopMarginBox/ChoiceAlignment
 @onready var dialogue_alignment: VBoxContainer = $MainStack/BottomAlignment/DialogueAlignment
 @onready var button_alignment: HBoxContainer = $MainStack/BottomAlignment/ButtonAlignment
 
@@ -26,11 +28,15 @@ const CHAR_STYLES = {
 @onready var hide_ui_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row2/HideUIButton
 @onready var next_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/NextButton
 
+# Choice Node
+@onready var choice_template = $MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate
+
 # State
 var is_ui_hidden: bool = false
 var current_index: int = 0
 
 var current_dialogues: Array = []
+var current_choices: Array = []
 var text_tween: Tween
 var fade_tween: Tween
 
@@ -46,10 +52,18 @@ func _ready() -> void:
 
 # --- DIALOGUE LOGIC ---
 
-func start_dialogue(dialogue_array: Array) -> void:
+func start_dialogue(dialogue_array: Array, choices_array: Array = []) -> void:
 	toggle_dialogue_box(true)
+	
 	current_dialogues = dialogue_array
+	current_choices = choices_array
 	current_index = 0
+	
+	# Reset UI for new scene
+	choice_alignment.hide()
+	next_button.show()
+	_clear_old_choices()
+	
 	_display_current_line()
 
 func _display_current_line() -> void:
@@ -89,6 +103,7 @@ func _input(event: InputEvent) -> void:
 
 func _toggle_ui(show_ui: bool) -> void:
 	# Hide the text dialogue box and button row
+	choice_alignment.visible = show_ui
 	dialogue_alignment.visible = show_ui
 	button_alignment.visible = show_ui
 	is_ui_hidden = !show_ui
@@ -142,5 +157,35 @@ func _advance_line() -> void:
 	current_index += 1
 	if current_index < current_dialogues.size():
 		_display_current_line()
+	elif current_choices.size() > 0:
+		_show_choices()
 	else:
 		dialogue_finished.emit()
+
+
+# --- UPDATE CHOICES ---
+func _clear_old_choices() -> void:
+	# Delete all old choices EXCEPT hidden template
+	for child in choice_alignment.get_children():
+		if child != choice_template:
+			child.queue_free()
+
+func _show_choices() -> void:
+	next_button.hide()
+	choice_alignment.show()
+	
+	for choice in current_choices:
+		var new_choice = choice_template.duplicate()
+		var label = new_choice.get_node("Padding/Label")
+		label.text = choice["text"]
+		new_choice.show()
+		new_choice.gui_input.connect(_on_choice_gui_input.bind(choice["next_block"]))
+		choice_alignment.add_child(new_choice)
+
+func _on_choice_gui_input(event: InputEvent, target_block: String) -> void:
+	var is_tap = event is InputEventScreenTouch and event.pressed
+	var is_click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+	
+	if is_tap or is_click:
+		choice_alignment.hide() 
+		choice_selected.emit(target_block)

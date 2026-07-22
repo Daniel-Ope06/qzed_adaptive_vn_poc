@@ -79,7 +79,38 @@ script = ExtResource("2_4uofa")
 
 [node name="MainStack" type="VBoxContainer" parent="." unique_id=1629778387]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 64
+
+[node name="TopMarginBox" type="MarginContainer" parent="MainStack" unique_id=1711339390]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="ChoiceAlignment" type="VBoxContainer" parent="MainStack/TopMarginBox" unique_id=1125372471]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="ChoiceTemplate" type="PanelContainer" parent="MainStack/TopMarginBox/ChoiceAlignment" unique_id=1978948523]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_lrxjj")
+
+[node name="Padding" type="MarginContainer" parent="MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate" unique_id=2104343022]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate/Padding" unique_id=708961718]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_r5j0u")
+theme_override_font_sizes/font_size = 42
+text = "Choice"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="BottomAlignment" type="VBoxContainer" parent="MainStack" unique_id=202009114]
 layout_mode = 2
