@@ -17,6 +17,7 @@ const CHAR_STYLES = {
 @onready var choice_alignment: VBoxContainer = $MainStack/TopMarginBox/ChoiceAlignment
 @onready var dialogue_alignment: VBoxContainer = $MainStack/BottomAlignment/DialogueAlignment
 @onready var button_alignment: HBoxContainer = $MainStack/BottomAlignment/ButtonAlignment
+@onready var confirmation_popup: Panel = $OverlayLayer/ConfirmationPopup
 
 # Speaker Nodes
 @onready var name_panel: PanelContainer = $MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel
@@ -45,9 +46,13 @@ func _ready() -> void:
 	# Enable BBCode to use bold text and URL keywords
 	dialogue_text.bbcode_enabled = true
 	
+	# Hide Popup
+	confirmation_popup.close_popup()
+	
 	# Connect Signals
 	next_button.pressed.connect(_on_next_button_pressed)
 	hide_ui_button.pressed.connect(_on_hide_ui_button_pressed)
+	timeline_button.pressed.connect(_on_timeline_button_pressed)
 	dialogue_text.meta_clicked.connect(_on_keyword_clicked)
 
 
@@ -192,3 +197,8 @@ func _on_choice_gui_input(event: InputEvent, target_block: String) -> void:
 	if is_tap or is_click:
 		choice_alignment.hide() 
 		choice_selected.emit(target_block)
+
+
+# --- RETURN TO TIMELINE ---
+func _on_timeline_button_pressed() -> void:
+	confirmation_popup.open_popup()
