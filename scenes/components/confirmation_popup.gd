@@ -19,5 +19,8 @@ func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/timeline.tscn")
 
 func _on_close_panel_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	var is_tap = event is InputEventScreenTouch and event.pressed
+	var is_click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+	
+	if is_tap or is_click:
 		close_popup()
