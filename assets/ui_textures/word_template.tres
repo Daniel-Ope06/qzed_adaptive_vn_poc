@@ -1,0 +1,57 @@
+[gd_resource type="Theme" format=3 uid="uid://dvcp0g84a55gw"]
+
+[ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="1_ohf7f"]
+[ext_resource type="Texture2D" uid="uid://u1q6s1awpe2y" path="res://assets/ui_icons/icon_sys_arrow_right.png" id="2_ohf7f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcexa"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.9490196, 0.972549, 0.99607843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.80784315, 0.89411765, 0.9764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.79607844, 0.9019608, 1, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohf7f"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.8156694, 0.90135294, 0.9860603, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.80784315, 0.89411765, 0.9764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.79607844, 0.9019608, 1, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3)
+
+[resource]
+Button/colors/font_color = Color(0, 0.23921569, 0.47843137, 1)
+Button/colors/font_focus_color = Color(0, 0.23921569, 0.47843137, 1)
+Button/colors/font_hover_color = Color(0, 0.23921569, 0.47843137, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0.23921569, 0.47843137, 1)
+Button/colors/font_pressed_color = Color(0, 0.23921569, 0.47843137, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 48
+Button/font_sizes/font_size = 42
+Button/fonts/font = ExtResource("1_ohf7f")
+Button/icons/icon = ExtResource("2_ohf7f")
+Button/styles/hover = SubResource("StyleBoxFlat_rcexa")
+Button/styles/normal = SubResource("StyleBoxFlat_rcexa")
+Button/styles/pressed = SubResource("StyleBoxFlat_ohf7f")
