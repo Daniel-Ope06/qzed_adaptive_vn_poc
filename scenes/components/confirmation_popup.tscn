@@ -63,10 +63,10 @@ border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.2, 0.6, 1, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
 
 [node name="ConfirmationPopup" type="Panel" unique_id=496104491]
 anchors_preset = 15
@@ -141,12 +141,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fi86t")
 text = "Leave"
 
 [node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1827134958]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(16, -16)
+offset_transform_visual_only = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_ql73s")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel/ClosePanel" unique_id=1878312094]
@@ -154,7 +155,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Panel/ClosePanel/CenterContainer" unique_id=1591154185]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("5_fi86t")
