@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://boqx1y17g363s"]
+
+[ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="1_gm42q"]
+[ext_resource type="Script" uid="uid://sh554q5dsr3q" path="res://scenes/components/confirmation_popup.gd" id="1_kl8lp"]
+[ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="2_4t5xp"]
+[ext_resource type="Theme" uid="uid://d08qiswidn2sj" path="res://assets/ui_textures/secondary_theme.tres" id="3_4t5xp"]
+[ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="3_r7duh"]
+[ext_resource type="Texture2D" uid="uid://ctkdq5pomuedb" path="res://assets/ui_icons/icon_sys_close.png" id="5_fi86t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0s4m"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccy5s"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.2, 0.6, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5xp"]
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 0.49803922, 0, 1)
+border_width_top = 12
+border_color = Color(1, 0.7137255, 0.43137255, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.6039216, 0.32941177, 0.05490196, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi86t"]
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 0.49803922, 0, 1)
+border_width_top = 12
+border_color = Color(1, 0.7137255, 0.43137255, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.6039216, 0.32941177, 0.05490196, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql73s"]
+bg_color = Color(0, 0.34901962, 0.7019608, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.2, 0.6, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="ConfirmationPopup" type="Panel" unique_id=496104491]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0s4m")
+script = ExtResource("1_kl8lp")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=8995451]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31458333
+anchor_top = 0.30277777
+anchor_right = 0.68541664
+anchor_bottom = 0.69722223
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ccy5s")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=478350282]
+layout_mode = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 64
+
+[node name="Column" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=797973162]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextAlignment" type="VBoxContainer" parent="Panel/MarginContainer/Column" unique_id=374760774]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Label" parent="Panel/MarginContainer/Column/TextAlignment" unique_id=1573561681]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("1_gm42q")
+theme_override_font_sizes/font_size = 48
+text = "Return to Timeline?"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Panel/MarginContainer/Column/TextAlignment" unique_id=1043033245]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("2_4t5xp")
+theme_override_font_sizes/font_size = 32
+text = "Leaving will restart this story."
+horizontal_alignment = 1
+
+[node name="ButtonAlignment" type="HBoxContainer" parent="Panel/MarginContainer/Column" unique_id=1406788738]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="CancelButton" type="Button" parent="Panel/MarginContainer/Column/ButtonAlignment" unique_id=488968871]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_4t5xp")
+text = "Cancel"
+
+[node name="ReturnButton" type="Button" parent="Panel/MarginContainer/Column/ButtonAlignment" unique_id=26948689]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_r7duh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t5xp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fi86t")
+text = "Leave"
+
+[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1827134958]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(16, -16)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ql73s")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ClosePanel" unique_id=1878312094]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ClosePanel/CenterContainer" unique_id=1591154185]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_fi86t")
+expand_mode = 1
