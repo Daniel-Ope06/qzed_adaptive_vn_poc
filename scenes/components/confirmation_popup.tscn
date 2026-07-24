@@ -3,24 +3,13 @@
 [ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="1_gm42q"]
 [ext_resource type="Script" uid="uid://sh554q5dsr3q" path="res://scenes/components/confirmation_popup.gd" id="1_kl8lp"]
 [ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="2_4t5xp"]
+[ext_resource type="StyleBox" uid="uid://c50y3iywi7e05" path="res://assets/ui_textures/popup.tres" id="2_mq43p"]
 [ext_resource type="Theme" uid="uid://d08qiswidn2sj" path="res://assets/ui_textures/secondary_theme.tres" id="3_4t5xp"]
 [ext_resource type="Theme" uid="uid://s50ab4h6vned" path="res://assets/ui_textures/default_theme.tres" id="3_r7duh"]
 [ext_resource type="Texture2D" uid="uid://ctkdq5pomuedb" path="res://assets/ui_icons/icon_sys_close.png" id="5_fi86t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0s4m"]
 bg_color = Color(0, 0, 0, 0.39215687)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccy5s"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.2, 0.6, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5xp"]
 content_margin_left = 24.0
@@ -86,7 +75,7 @@ anchor_right = 0.68541664
 anchor_bottom = 0.69722223
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ccy5s")
+theme_override_styles/panel = ExtResource("2_mq43p")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=478350282]

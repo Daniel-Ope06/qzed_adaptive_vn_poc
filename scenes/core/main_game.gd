@@ -1,9 +1,11 @@
 extends Control
 
 @onready var visual_layer: Control = $VisualLayer
-@onready var dialogue_ui = $UILayer/DialogueUI
+@onready var dialogue_ui: Control = $UILayer/DialogueUI
+@onready var word_bank: Control = $UILayer/DialogueUI/OverlayLayer/WordBankPopup
 
 var story_data: Dictionary = {}
+var dict_data: Dictionary = {}
 var current_block: Dictionary = {}
 var waiting_for_next_click: bool = false
 
@@ -16,14 +18,21 @@ func _ready() -> void:
 		push_error("Main Game: Launched without a valid story ID")
 		return
 	
-	var file_path = "res://data/story/%s.json" % active_story_id
-	if not FileAccess.file_exists(file_path):
-		push_error("Main Game: Story file not found at " + file_path)
+	var story_path = "res://data/story/%s.json" % active_story_id
+	var dict_path = "res://data/dictionary/%s_dict.json" % active_story_id
+	
+	if not (FileAccess.file_exists(story_path) or FileAccess.file_exists(dict_path)):
+		push_error("Story file(s) not found")
 		return
 	
-	var file_text = FileAccess.get_file_as_string(file_path)
-	story_data = JSON.parse_string(file_text)
+	var story_text = FileAccess.get_file_as_string(story_path)
+	var dict_text = FileAccess.get_file_as_string(dict_path)
+	
+	story_data = JSON.parse_string(story_text)
+	dict_data = JSON.parse_string(dict_text)
+	
 	play_block("scene_1")
+	word_bank.setup_word_list(dict_data["concepts"])
 
 func play_block(block_id: String) -> void:
 	if block_id == "stop":

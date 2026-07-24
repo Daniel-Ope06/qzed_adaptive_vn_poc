@@ -18,6 +18,7 @@ const CHAR_STYLES = {
 @onready var dialogue_alignment: VBoxContainer = $MainStack/BottomAlignment/DialogueAlignment
 @onready var button_alignment: HBoxContainer = $MainStack/BottomAlignment/ButtonAlignment
 @onready var confirmation_popup: Panel = $OverlayLayer/ConfirmationPopup
+@onready var word_bank_popup: Panel = $OverlayLayer/WordBankPopup
 
 # Speaker Nodes
 @onready var name_panel: PanelContainer = $MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel
@@ -29,6 +30,7 @@ const CHAR_STYLES = {
 @onready var hide_ui_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row2/HideUIButton
 @onready var next_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/NextButton
 @onready var timeline_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/TimelineButton
+@onready var dictionary_button: Button = $MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row/DictionaryButton
 
 # Choice Node
 @onready var choice_template = $MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate
@@ -48,11 +50,13 @@ func _ready() -> void:
 	
 	# Hide Popup
 	confirmation_popup.close_popup()
+	word_bank_popup.close_popup()
 	
 	# Connect Signals
 	next_button.pressed.connect(_on_next_button_pressed)
 	hide_ui_button.pressed.connect(_on_hide_ui_button_pressed)
 	timeline_button.pressed.connect(_on_timeline_button_pressed)
+	dictionary_button.pressed.connect(_on_dictionary_button_pressed)
 	dialogue_text.meta_clicked.connect(_on_keyword_clicked)
 
 
@@ -146,9 +150,8 @@ func _update_dialogue(text: String) -> void:
 	var duration = text.length() * 0.03 # 0.03 seconds per character
 	text_tween.tween_property(dialogue_text, "visible_ratio", 1.0, duration)
 
-func _on_keyword_clicked(meta_data) -> void:
-	print("Keyword clicked! Loading dictionary entry for: ", meta_data)
-	# TODO: Dictionary UI here based on the meta_data
+func _on_keyword_clicked(word: String) -> void:
+	word_bank_popup.open_word_clicked(word)
 
 func _on_next_button_pressed() -> void:
 	# If text is typing, skip to the end of the sentence
@@ -199,6 +202,9 @@ func _on_choice_gui_input(event: InputEvent, target_block: String) -> void:
 		choice_selected.emit(target_block)
 
 
-# --- RETURN TO TIMELINE ---
+# --- POPUPS ---
 func _on_timeline_button_pressed() -> void:
 	confirmation_popup.open_popup()
+
+func _on_dictionary_button_pressed() -> void:
+	word_bank_popup.open_popup()

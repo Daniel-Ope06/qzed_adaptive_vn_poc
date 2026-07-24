@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://dvcp0g84a55gw"]
 
 [ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="1_ohf7f"]
-[ext_resource type="Texture2D" uid="uid://u1q6s1awpe2y" path="res://assets/ui_icons/icon_sys_arrow_right.png" id="2_ohf7f"]
+[ext_resource type="Texture2D" uid="uid://u1q6s1awpe2y" path="res://assets/ui_icons/icon_sys_caret_right_2.png" id="2_ohf7f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcexa"]
 content_margin_left = 16.0
