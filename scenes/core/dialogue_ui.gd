@@ -42,7 +42,8 @@ var current_index: int = 0
 var current_dialogues: Array = []
 var current_choices: Array = []
 var text_tween: Tween
-var fade_tween: Tween
+var fade_dialogue_tween: Tween
+var fade_button_tween: Tween
 
 func _ready() -> void:
 	# Enable BBCode to use bold text and URL keywords
@@ -63,17 +64,15 @@ func _ready() -> void:
 # --- DIALOGUE LOGIC ---
 
 func start_dialogue(dialogue_array: Array, choices_array: Array = []) -> void:
+	# Reset UI for new scene
+	choice_alignment.hide()
+	_clear_old_choices()
 	toggle_dialogue_box(true)
+	toggle_button_row(true)
 	
 	current_dialogues = dialogue_array
 	current_choices = choices_array
 	current_index = 0
-	
-	# Reset UI for new scene
-	choice_alignment.hide()
-	next_button.show()
-	timeline_button.show()
-	_clear_old_choices()
 	
 	_display_current_line()
 
@@ -87,17 +86,36 @@ func _display_current_line() -> void:
 
 # --- HIDE / SHOW UI LOGIC ---
 func toggle_dialogue_box(show_ui: bool) -> void:
-	if fade_tween and fade_tween.is_valid():
-		fade_tween.kill()
-	fade_tween = create_tween()
+	if fade_dialogue_tween and fade_dialogue_tween.is_valid():
+		fade_dialogue_tween.kill()
+	fade_dialogue_tween = create_tween()
 	var fade_time = 0.2
 	
 	if show_ui:
 		dialogue_alignment.mouse_filter = Control.MOUSE_FILTER_PASS # Accept clicks
-		fade_tween.tween_property(dialogue_alignment, "modulate:a", 1.0, fade_time)
+		fade_dialogue_tween.tween_property(dialogue_alignment, "modulate:a", 1.0, fade_time)
 	else:
 		dialogue_alignment.mouse_filter = Control.MOUSE_FILTER_IGNORE # Ignore clicks
-		fade_tween.tween_property(dialogue_alignment, "modulate:a", 0.0, fade_time)
+		fade_dialogue_tween.tween_property(dialogue_alignment, "modulate:a", 0.0, fade_time)
+
+func toggle_button_row(show_ui: bool) -> void:
+	if fade_button_tween and fade_button_tween.is_valid():
+		fade_button_tween.kill()
+	fade_button_tween = create_tween()
+	var fade_time = 0.2
+	
+	if show_ui:
+		# Accept clicks
+		timeline_button.mouse_filter = Control.MOUSE_FILTER_PASS
+		next_button.mouse_filter = Control.MOUSE_FILTER_PASS
+		hide_ui_button.mouse_filter = Control.MOUSE_FILTER_PASS
+		fade_button_tween.tween_property(button_alignment, "modulate:a", 1.0, fade_time)
+	else:
+		# Ignore clicks
+		timeline_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		next_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		hide_ui_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		fade_button_tween.tween_property(button_alignment, "modulate:a", 0.0, fade_time)
 
 func _on_hide_ui_button_pressed() -> void:
 	_toggle_ui(false)
@@ -147,7 +165,7 @@ func _update_dialogue(text: String) -> void:
 		text_tween.kill()
 	
 	text_tween = create_tween()
-	var duration = text.length() * 0.03 # 0.03 seconds per character
+	var duration = dialogue_text.get_total_character_count() * 0.03 # 0.03 seconds per character
 	text_tween.tween_property(dialogue_text, "visible_ratio", 1.0, duration)
 
 func _on_keyword_clicked(word: String) -> void:
@@ -181,8 +199,7 @@ func _clear_old_choices() -> void:
 			child.queue_free()
 
 func _show_choices() -> void:
-	next_button.hide()
-	timeline_button.hide()
+	toggle_button_row(false)
 	choice_alignment.show()
 	
 	for choice in current_choices:

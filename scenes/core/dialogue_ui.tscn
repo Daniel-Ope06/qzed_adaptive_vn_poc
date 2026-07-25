@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dwjvep6r0t73a" path="res://assets/ui_icons/icon_sys_dictionary.png" id="4_q4xhs"]
 [ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="6_r5j0u"]
 [ext_resource type="Texture2D" uid="uid://do4gitb57lx80" path="res://assets/ui_icons/icon_sys_history.png" id="6_xhbjx"]
+[ext_resource type="FontFile" uid="uid://c6ae12kf1m65i" path="res://assets/fonts/manrope/Manrope-ExtraBold.ttf" id="7_nr4cu"]
 [ext_resource type="Texture2D" uid="uid://dushe8hydasqf" path="res://assets/ui_icons/icon_sys_hide.png" id="7_q4xhs"]
+[ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="8_e60fg"]
 [ext_resource type="Texture2D" uid="uid://kodxhxi3bflg" path="res://assets/ui_icons/icon_sys_timeline.png" id="8_r5j0u"]
 [ext_resource type="PackedScene" uid="uid://boqx1y17g363s" path="res://scenes/components/confirmation_popup.tscn" id="12_lmlw1"]
 [ext_resource type="PackedScene" uid="uid://c0rdonrxf3itx" path="res://scenes/components/word_bank_popup.tscn" id="13_ubgma"]
@@ -173,7 +175,13 @@ theme_override_constants/separation = 24
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("6_r5j0u")
+theme_override_fonts/bold_font = ExtResource("7_nr4cu")
+theme_override_fonts/italics_font = ExtResource("8_e60fg")
 theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
 
 [node name="DictionaryButton" type="Button" parent="MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row" unique_id=1443163817]
@@ -188,6 +196,7 @@ icon = ExtResource("4_q4xhs")
 icon_alignment = 1
 
 [node name="ButtonAlignment" type="HBoxContainer" parent="MainStack/BottomAlignment" unique_id=1729974073]
+custom_minimum_size = Vector2(0, 106)
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 2

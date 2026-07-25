@@ -36,10 +36,12 @@ func _ready() -> void:
 
 func play_block(block_id: String) -> void:
 	if block_id == "stop":
-		return
+		GameManager.flowchart_data[2]["nodes"][0]["state"] = StoryNode.NodeState.COMPLETED
+		get_tree().change_scene_to_file("res://scenes/menus/timeline.tscn")
 	
 	current_block = story_data["blocks"][block_id]
 	dialogue_ui.toggle_dialogue_box(false) # Hide dialogue box
+	dialogue_ui.toggle_button_row(false) # Hide buttons
 	waiting_for_next_click = false
 	
 	var cg_type = current_block["type"]
