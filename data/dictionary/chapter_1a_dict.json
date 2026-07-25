@@ -1,8 +1,7 @@
 {
 	"chapter_id": "1a",
 	"concepts": {
-		"Normal Line": "An imaginary line drawn perpendicular to a reflecting surface at the exact point where a beam strikes it.",
-		"Reflection": "",
-		"Refraction": ""
+		"Normal Line": "An invisible baseline standing straight up from a surface at exactly ninety degrees used to measure how light bends and bounces.",
+		"Snell's Law": "The formula for calculating how much light bends when passing between two different materials.\n\n[center][img=500]res://assets/latex_equations/snells_law_gray.png[/img][/center]",
 	}
 }

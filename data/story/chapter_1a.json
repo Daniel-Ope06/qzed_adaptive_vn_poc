@@ -96,7 +96,7 @@
 					"next_block": "scene_6a"
 				},
 				{
-					"text": "Establish the 'Normal Line'.",
+					"text": "Establish the Normal Line.",
 					"next_block": "scene_6b"
 				}
 			]
@@ -115,7 +115,7 @@
 				},
 				{
 					"speaker": "Ella",
-					"text": "In optics, we always measure angles from the [color=#FF7F00][url=normal_line_def]Normal Line[/url][/color]."
+					"text": "In optics, we always measure angles from the [color=#FF7F00][url=Normal Line]Normal Line[/url][/color]."
 				},
 				{
 					"speaker": "Ella",
@@ -145,7 +145,123 @@
 					"text": "The glass is bending the beam away from the hatch!"
 				}
 			],
-			"next_block": "stop"
+			"next_block": "scene_7"
 		},
+		"scene_7": {
+			"type": "dialogue_cg",
+			"background": "refraction_explained_gray",
+			"sprites": {
+				"left": "ella_space_explaining"
+			},
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "This is where it gets tricky."
+				},
+				{
+					"speaker": "Ella",
+					"text": "Space is empty, but that quartz viewport is incredibly dense."
+				},
+				{
+					"speaker": "Ella",
+					"text": "When light moves from a low-density medium to a high-density medium, it slows down."
+				},
+			],
+			"next_block": "scene_8"
+		},
+		"scene_8": {
+			"type": "static_cg",
+			"background": "refraction_explained_color",
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "Because it's hitting the glass at a tilted angle, the light wavefront bends toward the normal line."
+				},
+				{
+					"speaker": "Ella",
+					"text": "[color=#FF7F00][url=\"Snell's Law\"]Snell's Law[/url][/color] is fighting us right now:\n[font_size=8]\n[/font_size][center][img=600]res://assets/latex_equations/snells_law.png[/img][/center]"
+				},
+				{
+					"speaker": "Quinn",
+					"text": "I don't care about the law, Ella, I care about the smoke filling my lungs! How do we stop the glass from bending the light away from me?"
+				}
+			],
+			"next_block": "scene_9"
+		},
+		"scene_9": {
+			"type": "static_cg",
+			"background": "refraction_explained_gray",
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "How do you override the refractive bending of the light through the dense glass viewport?"
+				}
+			],
+			"choices": [
+				{
+					"text": "Increase laser power to punch through without slowing down.",
+					"next_block": "scene_10a"
+				},
+				{
+					"text": "Adjust the mirror so the beam hits perfectly straight on.",
+					"next_block": "scene_10b"
+				}
+			]
+		},
+		"scene_10a": {
+			"type": "dialogue_cg",
+			"background": "refraction_explained_gray",
+			"sprites": {
+				"left": "ella_space_frustrated"
+			},
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "Negative. The index of refraction is a structural property of the material itself."
+				},
+				{
+					"speaker": "Ella",
+					"text": "It represents the ratio of the speed of light in a vacuum to its speed in that specific medium."
+				},
+				{
+					"speaker": "Ella",
+					"text": "Turning up the intensity makes the beam brighter, but it doesn't change the speed of light inside quartz."
+				},
+				{
+					"speaker": "Ella",
+					"text": "It will still bend at the exact same angle, just with more blinding energy. Try again."
+				}
+			],
+			"next_block": "scene_9"
+		},
+		"scene_10b": {
+			"type": "dialogue_cg",
+			"background": "refraction_explained_gray",
+			"sprites": {
+				"left": "ella_space_explaining"
+			},
+			"dialogue": [
+				{
+					"speaker": "Ella",
+					"text": "Brilliant! If the angle of incidence is exactly 0 degrees relative to the normal line, then [i]sin(0) = 0[/i]."
+				},
+				{
+					"speaker": "Ella",
+					"text": "According to Snell's Law, the angle of refraction must also be 0 degrees. No bending can occur."
+				}
+			],
+			"next_block": "scene_11"
+		},
+		"scene_11": {
+			"type": "static_cg",
+			"background": "quinn_turning_wheel",
+			"dialogue": [
+				{
+					"speaker": "Quinn",
+					"text": "I’ve got it! The wheel is fully lit! Thanks for the save!"
+				}
+			],
+			"next_block": "stop"
+		}
 	}
 }
