@@ -80,15 +80,17 @@ func _on_word_pressed(word: String):
 	
 	word_heading.text = word
 	word_definition.text = current_concepts.get(word)
-	var index: int = current_concepts.keys().find(word)
-	count.text = str(index + 1) + " / " + str(current_size)
+	current_index = current_concepts.keys().find(word)
+	count.text = str(current_index + 1) + " / " + str(current_size)
 
 func _on_back_panel_gui_input(event: InputEvent) -> void:
-	var is_tap = event is InputEventScreenTouch and event.pressed
-	var is_click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+	var is_tap = event is InputEventScreenTouch and event.is_released()
+	var is_click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released()
 	
 	if is_tap or is_click:
-		open_popup()
+		page_1.show()
+		page_2.hide()
+		back_panel.hide()
 
 func _on_left_btn_pressed() -> void:
 	if current_index == 0:
