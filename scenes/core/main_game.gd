@@ -35,9 +35,10 @@ func _ready() -> void:
 	word_bank.setup_word_list(dict_data["concepts"])
 
 func play_block(block_id: String) -> void:
-	if block_id == "stop":
+	if block_id == "end":
 		GameManager.flowchart_data[2]["nodes"][0]["state"] = StoryNode.NodeState.COMPLETED
 		get_tree().change_scene_to_file("res://scenes/menus/timeline.tscn")
+		return
 	
 	current_block = story_data["blocks"][block_id]
 	dialogue_ui.toggle_dialogue_box(false) # Hide dialogue box
