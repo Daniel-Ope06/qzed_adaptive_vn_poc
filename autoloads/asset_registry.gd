@@ -11,11 +11,15 @@ const CG_REGISTRY: Dictionary = {
 	"reflection_explained_color": "res://assets/cg_static/reflection_explained_color.webp",
 	"spaceship_hallway_wrong": "res://assets/cg_animated/spaceship_hallway_wrong.tres",
 	"spaceship_hallway_right": "res://assets/cg_animated/spaceship_hallway_right.tres",
+	"refraction_explained_gray": "res://assets/cg_static/refraction_explained_gray.webp",
+	"refraction_explained_color": "res://assets/cg_static/refraction_explained_color.webp",
+	"quinn_turning_wheel": "res://assets/cg_static/quinn_turning_wheel.webp"
 }
 
 const SPRITE_REGISTRY: Dictionary = {
 	# Chapter 1
-	"ella_space_explaining": "res://assets/sprite_animated/ella_space_explaining.tres"
+	"ella_space_explaining": "res://assets/sprite_animated/ella_space_explaining.tres",
+	"ella_space_frustrated": "res://assets/sprite_animated/ella_space_frustrated.tres"
 }
 
 func get_cg_path(asset_id: String) -> String:
