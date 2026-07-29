@@ -3,15 +3,6 @@ extends MarginContainer
 signal dialogue_finished
 signal choice_selected(next_block: String)
 
-const CHAR_STYLES = {
-	"Quinn": {"bg_color": Color("#F57A00"), "font_color": Color("#FFF5EB")},
-	"Zach": {"bg_color": Color("#99CCFF"), "font_color": Color("#003D7A")},
-	"Ella": {"bg_color": Color("#fd6969"), "font_color": Color("#7d2d16") },
-	"Daniel": {"bg_color": Color("#428e2c"), "font_color": Color("#74c84f")},
-	# A fallback for a narrator or an unknown speaker
-	"System": {"bg_color": Color("#525252"), "font_color": Color("#F5F5F5")}
-}
-
 # --- SCENE TREE REFERENCES ---
 @onready var main_stack: VBoxContainer = $MainStack
 @onready var choice_alignment: VBoxContainer = $MainStack/TopMarginBox/ChoiceAlignment
@@ -79,7 +70,7 @@ func start_dialogue(dialogue_array: Array, choices_array: Array = []) -> void:
 func _display_current_line() -> void:
 	var line_data = current_dialogues[current_index]
 	var speaker = line_data["speaker"]
-	var style = CHAR_STYLES.get(speaker, CHAR_STYLES["System"])
+	var style = GameManager.CHAR_STYLES.get(speaker, GameManager.CHAR_STYLES["System"])
 	_update_speaker(speaker, style["font_color"], style["bg_color"])
 	_update_dialogue(line_data["text"])
 
