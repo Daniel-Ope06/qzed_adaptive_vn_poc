@@ -9,9 +9,35 @@ const CHAR_STYLES = {
 	"System": {"bg_color": Color("#525252"), "font_color": Color("#F5F5F5")}
 }
 
+const CHAR_STYLES_2 = {
+	"Quinn": {"bg_color": Color("#FFF5EB"), "font_color": Color("#FF7F00"), "border_color": Color("#FFE0C2")},
+	"Zach": {"bg_color": Color("#EAF4FF"), "font_color": Color("#003D7A"), "border_color": Color("#9CC7FF")},
+	"Ella": {"bg_color": Color("ffe1dec8"), "font_color": Color("#fd6969"), "border_color": Color("feb1acc8")},
+	"Daniel": {"bg_color": Color("#74c84f"), "font_color": Color("#428e2c"), "border_color": Color("#428e2c")},
+	# A fallback for a narrator or an unknown speaker
+	"System": {"bg_color": Color("#F5F5F5"), "font_color": Color("#525252"), "border_color": Color("b8b8b8c8")}
+}
+
 var current_story_id: String = ""
 
-var flowchart_data = [
+var current_history: Array[Dictionary] = []
+var url_regex: RegEx = RegEx.new()
+
+func _init() -> void:
+	# Compile the regex pattern once when the game boots.
+	# This pattern looks for [url="..."] and [/url]
+	url_regex.compile("\\[/?url.*?\\]")
+
+func add_to_history(speaker_name: String, dialogue_text: String) -> void:
+	var clean_text = url_regex.sub(dialogue_text, "", true)
+	clean_text = clean_text.replace(".png", "_gray.png")
+	var entry = {
+		"speaker": speaker_name,
+		"text": clean_text
+	}
+	current_history.append(entry)
+
+var flowchart_data: Array[Dictionary] = [
 	{
 		"size": "one",
 		"type": "story",

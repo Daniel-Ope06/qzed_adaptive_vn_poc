@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cjh62dqu6q66q"]
+
+[ext_resource type="Script" uid="uid://bdxdkh1gvgfeq" path="res://scenes/components/history_popup.gd" id="1_4r8jc"]
+[ext_resource type="StyleBox" uid="uid://c50y3iywi7e05" path="res://assets/ui_textures/popup.tres" id="1_xs0bm"]
+[ext_resource type="Texture2D" uid="uid://ctkdq5pomuedb" path="res://assets/ui_icons/icon_sys_close.png" id="2_wjru5"]
+[ext_resource type="FontFile" uid="uid://dnsmn4js6mj02" path="res://assets/fonts/clash_display/ClashDisplay-Semibold.otf" id="3_jib1k"]
+[ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="4_e8t2v"]
+[ext_resource type="FontFile" uid="uid://d4kmmy7klq85g" path="res://assets/fonts/manrope/Manrope-Light.ttf" id="5_w6l0x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khomi"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jib1k"]
+content_margin_left = 24.0
+content_margin_top = 8.0
+content_margin_right = 24.0
+content_margin_bottom = 8.0
+bg_color = Color(0.91764706, 0.95686275, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6117647, 0.78039217, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_leolm"]
+color = Color(0.80784315, 0.89411765, 0.9764706, 0.6)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r8jc"]
+bg_color = Color(0, 0.34901962, 0.7019608, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.2, 0.6, 1, 1)
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+
+[node name="HistoryPopup" type="Panel" unique_id=1972898339]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_khomi")
+script = ExtResource("1_4r8jc")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=333771441]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_xs0bm")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=384941727]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 72
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer" unique_id=426216152]
+custom_minimum_size = Vector2(1306, 648)
+custom_maximum_size = Vector2(1306, 648)
+layout_mode = 2
+theme_override_constants/scrollbar_h_separation = 32
+
+[node name="DialogueList" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer" unique_id=1179423013]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="DialogueTemplate" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList" unique_id=291370103]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="NamePanel" type="PanelContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1723395357]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jib1k")
+
+[node name="SpeakerName" type="Label" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate/NamePanel" unique_id=1751102615]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.23921569, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("3_jib1k")
+theme_override_font_sizes/font_size = 36
+text = "Zach"
+
+[node name="DialogueText" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1046031619]
+custom_minimum_size = Vector2(1226, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
+theme_override_fonts/normal_font = ExtResource("4_e8t2v")
+theme_override_fonts/italics_font = ExtResource("5_w6l0x")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "White light may look colourless, but it's actually made up of many different wavelengths."
+fit_content = true
+scroll_active = false
+
+[node name="LineTemplate" type="PanelContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList" unique_id=675109944]
+custom_minimum_size = Vector2(0, 2)
+custom_maximum_size = Vector2(-1, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_leolm")
+
+[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1393804525]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(16, -16)
+offset_transform_visual_only = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_4r8jc")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ClosePanel" unique_id=891022914]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ClosePanel/CenterContainer" unique_id=584853651]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_wjru5")
+expand_mode = 1

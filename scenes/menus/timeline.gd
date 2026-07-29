@@ -177,4 +177,5 @@ func add_arrow_head(at_position: Vector2, look_back_at: Vector2, head_color: Col
 
 func _on_story_node_selected(story_id: String) -> void:
 	GameManager.current_story_id = story_id
+	GameManager.current_history = []
 	get_tree().change_scene_to_file("res://scenes/core/main_game.tscn")

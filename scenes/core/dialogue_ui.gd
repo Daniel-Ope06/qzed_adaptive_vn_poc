@@ -10,6 +10,7 @@ signal choice_selected(next_block: String)
 @onready var button_alignment: HBoxContainer = $MainStack/BottomAlignment/ButtonAlignment
 @onready var confirmation_popup: Panel = $OverlayLayer/ConfirmationPopup
 @onready var word_bank_popup: Panel = $OverlayLayer/WordBankPopup
+@onready var history_popup: Panel = $OverlayLayer/HistoryPopup
 
 # Speaker Nodes
 @onready var name_panel: PanelContainer = $MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel
@@ -22,6 +23,7 @@ signal choice_selected(next_block: String)
 @onready var next_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/NextButton
 @onready var timeline_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row1/TimelineButton
 @onready var dictionary_button: Button = $MainStack/BottomAlignment/DialogueAlignment/TextPanel/Padding/Row/DictionaryButton
+@onready var history_button: Button = $MainStack/BottomAlignment/ButtonAlignment/Row2/HistoryButton
 
 # Choice Node
 @onready var choice_template = $MainStack/TopMarginBox/ChoiceAlignment/ChoiceTemplate
@@ -47,6 +49,7 @@ func _ready() -> void:
 	# Connect Signals
 	next_button.pressed.connect(_on_next_button_pressed)
 	hide_ui_button.pressed.connect(_on_hide_ui_button_pressed)
+	history_button.pressed.connect(_on_history_button_pressed)
 	timeline_button.pressed.connect(_on_timeline_button_pressed)
 	dictionary_button.pressed.connect(_on_dictionary_button_pressed)
 	dialogue_text.meta_clicked.connect(_on_keyword_clicked)
@@ -71,6 +74,7 @@ func _display_current_line() -> void:
 	var line_data = current_dialogues[current_index]
 	var speaker = line_data["speaker"]
 	var style = GameManager.CHAR_STYLES.get(speaker, GameManager.CHAR_STYLES["System"])
+	GameManager.add_to_history(line_data["speaker"], line_data["text"])
 	_update_speaker(speaker, style["font_color"], style["bg_color"])
 	_update_dialogue(line_data["text"])
 
@@ -198,15 +202,16 @@ func _show_choices() -> void:
 		var label = new_choice.get_node("Padding/Label")
 		label.text = choice["text"]
 		new_choice.show()
-		new_choice.gui_input.connect(_on_choice_gui_input.bind(choice["next_block"]))
+		new_choice.gui_input.connect(_on_choice_gui_input.bind(choice["next_block"], choice["text"]))
 		choice_alignment.add_child(new_choice)
 
-func _on_choice_gui_input(event: InputEvent, target_block: String) -> void:
+func _on_choice_gui_input(event: InputEvent, target_block: String, choice_text: String) -> void:
 	var is_tap = event is InputEventScreenTouch and event.pressed
 	var is_click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
 	
 	if is_tap or is_click:
-		choice_alignment.hide() 
+		choice_alignment.hide()
+		GameManager.add_to_history("Player", choice_text)
 		choice_selected.emit(target_block)
 
 
@@ -216,3 +221,6 @@ func _on_timeline_button_pressed() -> void:
 
 func _on_dictionary_button_pressed() -> void:
 	word_bank_popup.open_popup()
+
+func _on_history_button_pressed() -> void:
+	history_popup.open_popup()

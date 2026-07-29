@@ -16,6 +16,7 @@ func close_popup() -> void:
 	hide()
 
 func _on_return_pressed() -> void:
+	GameManager.current_history.clear()
 	get_tree().change_scene_to_file("res://scenes/menus/timeline.tscn")
 
 func _on_close_panel_gui_input(event: InputEvent) -> void:
