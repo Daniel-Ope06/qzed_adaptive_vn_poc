@@ -203,7 +203,7 @@
 					"next_block": "scene_10a"
 				},
 				{
-					"text": "Adjust the mirror so the beam hits perfectly straight on.",
+					"text": "Angle the laser further out so the glass refracts the light onto the wheel.",
 					"next_block": "scene_10b"
 				}
 			]
@@ -243,11 +243,7 @@
 			"dialogue": [
 				{
 					"speaker": "Ella",
-					"text": "Brilliant! If the angle of incidence is exactly 0 degrees relative to the normal line, then [i]sin(0) = 0[/i]."
-				},
-				{
-					"speaker": "Ella",
-					"text": "According to [color=#FF7F00][url=\"Snell's Law\"]Snell's Law[/url][/color], the angle of refraction must also be 0 degrees. No bending can occur."
+					"text": "Brilliant! Since the laser enters the denser glass at an angle, it has to bend inward. Angling it further out perfectly counters the refraction."
 				}
 			],
 			"next_block": "scene_11"
