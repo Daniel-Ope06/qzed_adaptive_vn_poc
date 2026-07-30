@@ -4,11 +4,31 @@
 [ext_resource type="StyleBox" uid="uid://c50y3iywi7e05" path="res://assets/ui_textures/popup.tres" id="1_xs0bm"]
 [ext_resource type="Texture2D" uid="uid://ctkdq5pomuedb" path="res://assets/ui_icons/icon_sys_close.png" id="2_wjru5"]
 [ext_resource type="FontFile" uid="uid://dnsmn4js6mj02" path="res://assets/fonts/clash_display/ClashDisplay-Semibold.otf" id="3_jib1k"]
+[ext_resource type="FontFile" uid="uid://ijvb12ayqv3f" path="res://assets/fonts/manrope/Manrope-SemiBold.ttf" id="3_w6l0x"]
 [ext_resource type="FontFile" uid="uid://beskn5idyjrr5" path="res://assets/fonts/manrope/Manrope-Medium.ttf" id="4_e8t2v"]
 [ext_resource type="FontFile" uid="uid://d4kmmy7klq85g" path="res://assets/fonts/manrope/Manrope-Light.ttf" id="5_w6l0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khomi"]
 bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3083"]
+content_margin_left = 48.0
+content_margin_top = 8.0
+content_margin_right = 48.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6, 0.8, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882354, 0.49803922, 0.8980392, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.015686275, 0.16862746, 0.31764707, 1)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jib1k"]
 content_margin_left = 24.0
@@ -70,37 +90,53 @@ theme_override_styles/panel = ExtResource("1_xs0bm")
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 72
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 72
+theme_override_constants/margin_bottom = 48
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer" unique_id=426216152]
+[node name="Column" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=2991077]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Header" type="PanelContainer" parent="Panel/MarginContainer/Column" unique_id=1381810208]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_h3083")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Column/Header" unique_id=1983622752]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.12156863, 0.23921569, 1)
+theme_override_fonts/font = ExtResource("3_w6l0x")
+theme_override_font_sizes/font_size = 32
+text = "History"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/Column" unique_id=426216152]
 custom_minimum_size = Vector2(1306, 648)
 custom_maximum_size = Vector2(1306, 648)
 layout_mode = 2
 theme_override_constants/scrollbar_h_separation = 32
 
-[node name="DialogueList" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer" unique_id=1179423013]
+[node name="DialogueList" type="VBoxContainer" parent="Panel/MarginContainer/Column/ScrollContainer" unique_id=1179423013]
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="DialogueTemplate" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList" unique_id=291370103]
+[node name="DialogueTemplate" type="VBoxContainer" parent="Panel/MarginContainer/Column/ScrollContainer/DialogueList" unique_id=291370103]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="NamePanel" type="PanelContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1723395357]
+[node name="NamePanel" type="PanelContainer" parent="Panel/MarginContainer/Column/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1723395357]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jib1k")
 
-[node name="SpeakerName" type="Label" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate/NamePanel" unique_id=1751102615]
+[node name="SpeakerName" type="Label" parent="Panel/MarginContainer/Column/ScrollContainer/DialogueList/DialogueTemplate/NamePanel" unique_id=1751102615]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.23921569, 0.47843137, 1)
 theme_override_fonts/font = ExtResource("3_jib1k")
 theme_override_font_sizes/font_size = 36
 text = "Zach"
 
-[node name="DialogueText" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1046031619]
+[node name="DialogueText" type="RichTextLabel" parent="Panel/MarginContainer/Column/ScrollContainer/DialogueList/DialogueTemplate" unique_id=1046031619]
 custom_minimum_size = Vector2(1226, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
@@ -113,7 +149,7 @@ text = "White light may look colourless, but it's actually made up of many diffe
 fit_content = true
 scroll_active = false
 
-[node name="LineTemplate" type="PanelContainer" parent="Panel/MarginContainer/ScrollContainer/DialogueList" unique_id=675109944]
+[node name="LineTemplate" type="PanelContainer" parent="Panel/MarginContainer/Column/ScrollContainer/DialogueList" unique_id=675109944]
 custom_minimum_size = Vector2(0, 2)
 custom_maximum_size = Vector2(-1, 2)
 layout_mode = 2

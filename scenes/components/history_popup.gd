@@ -1,11 +1,11 @@
 extends Panel
 
 @onready var close_panel: PanelContainer = $Panel/ClosePanel
-@onready var scroll_container: ScrollContainer = $Panel/MarginContainer/ScrollContainer
+@onready var scroll_container: ScrollContainer = $Panel/MarginContainer/Column/ScrollContainer
 
-@onready var dialogue_list: VBoxContainer = $Panel/MarginContainer/ScrollContainer/DialogueList
-@onready var dialogue_template: VBoxContainer = $Panel/MarginContainer/ScrollContainer/DialogueList/DialogueTemplate
-@onready var line_template: PanelContainer = $Panel/MarginContainer/ScrollContainer/DialogueList/LineTemplate
+@onready var dialogue_list: VBoxContainer = $Panel/MarginContainer/Column/ScrollContainer/DialogueList
+@onready var dialogue_template: VBoxContainer = $Panel/MarginContainer/Column/ScrollContainer/DialogueList/DialogueTemplate
+@onready var line_template: PanelContainer = $Panel/MarginContainer/Column/ScrollContainer/DialogueList/LineTemplate
 
 
 func _ready() -> void:
