@@ -22,12 +22,17 @@ config/icon="res://icon.svg"
 GlobalCursor="*uid://d2gwq6mnl11h1"
 GameManager="*uid://dxb7iaeichbpu"
 AssetRegistry="*uid://pfbjfwe3drob"
+AudioManager="*uid://gi7kir3en7cl"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Clickable=""
 
 [input_devices]
 
