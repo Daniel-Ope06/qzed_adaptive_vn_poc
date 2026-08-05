@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://kodxhxi3bflg" path="res://assets/ui_icons/icon_sys_timeline.png" id="8_r5j0u"]
 [ext_resource type="PackedScene" uid="uid://boqx1y17g363s" path="res://scenes/components/confirmation_popup.tscn" id="12_lmlw1"]
 [ext_resource type="PackedScene" uid="uid://c0rdonrxf3itx" path="res://scenes/components/word_bank_popup.tscn" id="13_ubgma"]
+[ext_resource type="AudioStream" uid="uid://cwkfkm0iw4uoh" path="res://assets/sounds/typing_sfx.ogg" id="14_13d5q"]
 [ext_resource type="PackedScene" uid="uid://cjh62dqu6q66q" path="res://scenes/components/history_popup.tscn" id="16_mubw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4xhs"]
@@ -229,6 +230,9 @@ icon = ExtResource("6_xhbjx")
 [node name="HideUIButton" type="Button" parent="MainStack/BottomAlignment/ButtonAlignment/Row2" unique_id=1039318020]
 layout_mode = 2
 icon = ExtResource("7_q4xhs")
+
+[node name="TypingSfx" type="AudioStreamPlayer" parent="." unique_id=1316049668]
+stream = ExtResource("14_13d5q")
 
 [node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=1410704779]
 

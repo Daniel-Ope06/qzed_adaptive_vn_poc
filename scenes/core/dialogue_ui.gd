@@ -11,6 +11,7 @@ signal choice_selected(next_block: String)
 @onready var confirmation_popup: Panel = $OverlayLayer/ConfirmationPopup
 @onready var word_bank_popup: Panel = $OverlayLayer/WordBankPopup
 @onready var history_popup: Panel = $OverlayLayer/HistoryPopup
+@onready var typing_sfx: AudioStreamPlayer = $TypingSfx
 
 # Speaker Nodes
 @onready var name_panel: PanelContainer = $MainStack/BottomAlignment/DialogueAlignment/NameAlignment/NamePanel
@@ -158,10 +159,14 @@ func _update_dialogue(text: String) -> void:
 	# If a previous line is still typing, kill the old tween
 	if text_tween and text_tween.is_valid():
 		text_tween.kill()
+		typing_sfx.stop()
 	
 	text_tween = create_tween()
 	var duration = dialogue_text.get_total_character_count() * 0.03 # 0.03 seconds per character
+	
+	typing_sfx.play()
 	text_tween.tween_property(dialogue_text, "visible_ratio", 1.0, duration)
+	text_tween.tween_callback(typing_sfx.stop)
 
 func _on_keyword_clicked(word: String) -> void:
 	word_bank_popup.open_word_clicked(word)
@@ -170,6 +175,7 @@ func _on_next_button_pressed() -> void:
 	# If text is typing, skip to the end of the sentence
 	if text_tween and text_tween.is_running():
 		text_tween.kill()
+		typing_sfx.stop()
 		dialogue_text.visible_ratio = 1.0
 		return
 	
