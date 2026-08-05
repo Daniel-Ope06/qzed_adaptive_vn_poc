@@ -129,7 +129,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4t5xp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fi86t")
 text = "Leave"
 
-[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1827134958]
+[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1827134958 groups=["Clickable"]]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 8

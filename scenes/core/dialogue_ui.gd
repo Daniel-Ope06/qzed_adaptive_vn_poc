@@ -208,6 +208,7 @@ func _show_choices() -> void:
 		var label = new_choice.get_node("Padding/Label")
 		label.text = choice["text"]
 		new_choice.show()
+		new_choice.add_to_group("Clickable")
 		new_choice.gui_input.connect(_on_choice_gui_input.bind(choice["next_block"], choice["text"]))
 		choice_alignment.add_child(new_choice)
 

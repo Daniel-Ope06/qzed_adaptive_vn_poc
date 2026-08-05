@@ -155,7 +155,7 @@ custom_maximum_size = Vector2(-1, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_leolm")
 
-[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1393804525]
+[node name="ClosePanel" type="PanelContainer" parent="Panel" unique_id=1393804525 groups=["Clickable"]]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 8

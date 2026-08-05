@@ -22,7 +22,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="StoryNode" type="PanelContainer" unique_id=886022900]
+[node name="StoryNode" type="PanelContainer" unique_id=886022900 groups=["Clickable"]]
 custom_minimum_size = Vector2(400, 225)
 custom_maximum_size = Vector2(400, 225)
 offset_right = 400.0

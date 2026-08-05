@@ -140,7 +140,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("1_mcfvt")
 
-[node name="ClosePanel" type="PanelContainer" parent="PopupBox" unique_id=1782426945]
+[node name="ClosePanel" type="PanelContainer" parent="PopupBox" unique_id=1782426945 groups=["Clickable"]]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -161,7 +161,7 @@ mouse_filter = 2
 texture = ExtResource("2_pc2qf")
 expand_mode = 1
 
-[node name="BackPanel" type="PanelContainer" parent="PopupBox" unique_id=2020184250]
+[node name="BackPanel" type="PanelContainer" parent="PopupBox" unique_id=2020184250 groups=["Clickable"]]
 visible = false
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dc4mx783ks7yv" path="res://scenes/components/quiz_node.gd" id="1_hbgbt"]
 [ext_resource type="FontFile" uid="uid://dy7r7jy1mky77" path="res://assets/fonts/manrope/Manrope-Bold.ttf" id="2_l6n3s"]
 
-[node name="QuizNode" type="MarginContainer" unique_id=199253620]
+[node name="QuizNode" type="MarginContainer" unique_id=199253620 groups=["Clickable"]]
 custom_minimum_size = Vector2(225, 225)
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
