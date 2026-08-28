@@ -154,29 +154,54 @@ The University may not make this dissertation available to others.
 
 \chapter{Introduction}
 \pagenumbering{arabic}
-For editorial consistency, it is important to use \LaTeX{} formatting properly. To use italics, replace the dots in \cmd{textit\{\ldots\}} with the text you would like to be italicized. To make text bold, use \cmd{textbf}.
-
-Chapters are entered using the \cmd{chapter} command. For example, this chapter begins with \cmd{chapter\{Introduction\}} in the \texttt{.tex} file. The chapter command automatically moves to the start of a new page and supplies the next chapter number. The first paragraph after a heading automatically will have no indent on the first line. In the \texttt{.tex} file, it does not matter whether you leave a blank line after the \cmd{chapter} command or not -- the typeset pdf will have it anyway.
-
-The remaining paragraphs will have an indent.
-
-In general, use the default spacing that headings and paragraphs give you. Avoid using new-lines or spaces to format text. If you need to use quotes, preferably use single curly quotes `\ldots'. In the \texttt{.tex} file, the opening quote is typed as a grave accent (\`{}) and the closing quote is typed as an apostrophe ($^\prime\,$). If you wish to emphasise something, usually use italic font.
 
 \section{Background and Context}
 
-Give the background to your project and context of what you have done. Sections within a chapter are entered using the \cmd{section} command, which automatically supplies the next section number.
+\quad Many educational games use fixed storylines that do not consider how different students learn. \textit{Serious Games} (SGs) need to keep players engaged by adjusting the challenges based on their skills~\cite{11}. Using a set difficulty level ignores learners' changing needs. Adapting the flow of information to individual learning needs can greatly improve understanding. However, creating personalised paths in games is difficult and time-consuming. Reinforcement learning (RL) is a useful method for adjusting difficulty in real time based on user needs. It treats \textit{Dynamic Difficulty Adjustment} (DDA) as a decision-making process, choosing difficulty levels that fit each user without relying on fixed rules. The main challenge is to measure how well a user is learning in real time without disrupting their game experience. This requires ongoing data telemetry and evaluation without disrupting the game flow.
+
 
 \section{Research Questions}
-List your research questions (typically two or three).
 
+\quad The original ambition of this project was to deploy a complete game, recruit up to 200 volunteer players, and analyse the AI algorithm's decision logs to map its learning curve. However, engineering a custom visual novel framework from the ground up introduced immense, unforeseen complexities. The sheer volume of labour required to draw custom 2D art assets, code the underlying engine architecture, and write branching story content alongside conceptual quizzes necessitated a strategic refinement in the research focus.
+
+Consequently, rather than evaluating live human metrics, this research pivots to address the foundational architectural questions required to make such an evaluation possible:
+
+\begin{enumerate}
+    \item How can a custom visual novel framework be designed to track ongoing stealth assessment data for future use in machine learning?
+
+    \item How can narrative story branching be mathematically formulated as an episodic task to allow an AI model to optimise pathway routing by learning from multiple users?
+\end{enumerate}
+
+\newpage
 \section{Scope and Objectives} \label{objectives sec}
-Define the scope and objectives of your project, in order to answer your research questions.
+
+\quad Because live human responses cannot be measured accurately without a robust, highly stable data pipeline, this project focuses strictly on the systems engineering required to support future AI integration. Empirical live testing is deferred to a future deployment on the \textit{QZed} platform~\footnote{QZed is an interactive educational learning platform that hosts game-based learning tools, past questions, and resources for students.}.
+
+The immediate objectives are to:
+
+\begin{enumerate}
+    \item Engineer a custom visual novel framework capable of capturing learner telemetry.
+
+    \item Formulate the pipeline required for an AI agent to modify the game's pathways based on aggregate student data.
+\end{enumerate}
+
 
 \section{Main Contribution}
-Summarise the main contribution that your work has made.
+
+\quad This dissertation delivers a functional, telemetry-ready visual novel framework. It gives developers a scalable framework for creating dynamic storytelling, ultimately enabling students to experience an educational environment that adapts to them rather than forcing them to adapt to the software.
+
 
 \section{Overview of Dissertation}
-Briefly overview the contents of what follows in the dissertation.
+
+\begin{enumerate}
+    \item Chapter 2 examines the current literature on adaptive learning environments, cognitive load, and dynamic difficulty adjustment.
+
+    \item Chapter 3 describes the methodology and technical design, justifying the custom visual novel framework, user interface design, and stochastic routing model.
+
+    \item Chapter 4 assesses the project's infrastructural viability and outlines the roadmap for deployment with live users.
+\end{enumerate}
+
+
 
 \chapter{State-of-the-Art}
 
