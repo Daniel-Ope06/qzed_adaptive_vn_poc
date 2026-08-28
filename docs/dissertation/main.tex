@@ -52,7 +52,7 @@ University of Stirling
     September 2025	
 \end{center}
 
-\newpage
+% \newpage
 \thispagestyle{empty}
 \mbox{}
 
@@ -164,24 +164,17 @@ Briefly overview the contents of what follows in the dissertation.
 \chapter{State-of-the-Art}
 Summarise current knowledge and what others have done in the topic of your dissertation. Do not include extensive background material. Instead, focus on explaining the gap in existing work that your dissertation will address. You may use tables and figures if appropriate. Write for someone familiar with computing, but not necessarily expert in the particular topics of your project. Give references to other work by using cross-references to entries in the References section, like this [2].
 
-\chapter{Technical Chapters (change this to something appropriate)}
-\textbf{Note: This part of the dissertation will normally be expanded to be a \textit{series of chapters}.}
-
-The technical body of the dissertation consists of a number of chapters (just one here, but there will usually be more). These will typically consist of the following, \textit{each of which may be one or more chapters}, as appropriate to your project – your supervisor will be able to advise on a suitable structure:
-
-\begin{itemize}
-    \item \textbf{Methodology / Design}: Identify and briefly explain the methods that you have used in your practical work. This might include, for example, the datasets and algorithms that you have used, and why you chose these. Or, for a development type project, it may include identification of requirements, choice of languages/frameworks/libraries, and design of the front- and back-end to meet the requirements. In all cases, you should \textbf{\textit{justify} the design decisions} that you have made, e.g. why did you use a particular dataset, a particular framework, or a particular user interface design? You must also \textbf{\textit{justify}} \textbf{how you will evaluate your work}, e.g. which metrics will you use to measure performance and why, or how will you carry out user testing and why is this the most appropriate way?
-
-Note that extensive screenshots of code should \textbf{not} be submitted, since you will submit your entire code base separately. You should instead describe your implementation at a high level, e.g. using diagrams or pseudocode (try to model this on how the papers that you have read and cited present their technical work). Occasional small snippets of code may be included if necessary to explain key parts of your work to the reader.
-
-\item \textbf{Results}: Present and analyse your key results, using figures and tables which you refer to and discuss in the text. This may include, for example, statistical analysis comparing machine learning algorithms, or an overview of software that you have built followed by a user evaluation study.
 
 
-\end{itemize}
+\chapter{Architecting the Adaptive Engine}
+
+To successfully create an adaptive visual novel, the system needs to connect game development with real-time data tracking. This chapter explains the technical setup and plan for the adaptive visual novel framework.
 
 
-\section{First Section}
-Subdivide your text into sections, using the \cmd{section} command.
+\section{Foundational Framework Development}
+
+\quad Many digital learning platforms use static text, which can quickly cause learners to lose interest. To address this, the game is designed as a \textit{Narrative-Based Learning Environment} (NBLE). Visual novels are like finite-state machines wrapped in a graphical interface, making them usable as an NBLE. By placing the learner in a story that responds to their actions, the system uses situated cognition to help them remember what they learn better~\cite{CJ}. However, for this environment to work as an intelligent tutor, it needs both narrative presentation and data telemetry.
+
 
 \subsection{First Subsection}
 If necessary, also use subsections. Subsections are entered using the \cmd{subsection} command (all these heading styles are self-numbering).
@@ -303,6 +296,8 @@ To cite an item from your bibliography in the text, use the \cmd{cite} command, 
 \textbf{Observe that all references should have a hyperlink to the work, as can be observed in the bibliography below.}
 
 \begin{thebibliography}{99999}
+
+\bibitem{CJ} C. Jennings, S. Pham, and M. J. Dupuis. \textit{Engagement, Usability, and Learning in Narrative-Driven Cybersecurity Awareness Games}. 2025 IEEE 16th Annual Ubiquitous Computing, Electronics \& Mobile Communication Conference (UEMCON), pp. 0316–0325, Oct. 2025. Link: \url{https://doi.org/10.1109/uemcon67449.2025.11267542}
 
 \bibitem{GW} Greene, D. and Williams, P. C. \textit{Linear Accelerators for Radiation Therapy}, Second Edition. IOP Publishing Ltd., Bristol and Philadelphia, 1997. Link: \url{https://doi.org/10.1201/9780429246562}
 
