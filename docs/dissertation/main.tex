@@ -9,10 +9,7 @@
 \usepackage{listings} % for source code
 % \lstset{basicstyle=\small\ttfamily,showstringspaces=false,keywordstyle=\bfseries\color{blue!70!black}}
 \usepackage[colorlinks=true,allcolors=red,urlcolor=blue]{hyperref}
-
-\usepackage{graphicx}
-\usepackage{titlesec}
-\usepackage{xcolor}
+\usepackage{subcaption}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % with 12 point font, single line spacing, single-sided pages
 \setlength{\parskip}{0.5\baselineskip}
@@ -207,7 +204,7 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 
 \quad While visual novel frameworks like \texttt{Ren’Py} offer strong storytelling tools, they limit control over the low-level systems. \texttt{Ren’Py} works best for straightforward stories with fixed choices or paths, making it hard to collect detailed data in real time. Godot Engine was selected to build a custom visual novel framework because its node-based, object-oriented architecture makes it easy to expand the system. The custom framework uses a Global Singleton called the \texttt{GameManager} Autoload. This tool tracks every player action, such as choosing dialogue or clicking on the user interface. This creates a steady flow of information about how players learn.
 
-\quad A critical requirement was ensuring the AI model could update the game's educational content without recompiling the software. To do this, the story content is separated from the engine logic by using \texttt{JSON} (JavaScript Object Notation) to organise the data (Listing \ref{lst:json}). Instead of hardcoding dialogue into scripts, the game uses lightweight, language-agnostic \texttt{JSON} files to define the characters, text, and pathway logic. This setup lets the game's backend easily send new or AI-customised chapters to the client~\cite{SJ}.
+\quad A critical requirement was ensuring the AI model could update the game's educational content without recompiling the software. To do this, the story content is separated from the engine logic by using \texttt{JSON} (JavaScript Object Notation) to organise the data (Listing~\ref{lst:json}). Instead of hardcoding dialogue into scripts, the game uses lightweight, language-agnostic \texttt{JSON} files to define the characters, text, and pathway logic. This setup lets the game's backend easily send new or AI-customised chapters to the client~\cite{SJ}.
 
 
 \noindent\begin{minipage}{1\linewidth}
@@ -217,12 +214,10 @@ To successfully create an adaptive visual novel, the system needs to connect gam
     "scene_1": {
         "type": "static_cg",
         "background": "quinn_trapped",
-        "dialogue":[
-            {
-                "speaker": "Quinn",
-                "text": "Ella, I'm blind down here!"
-            }
-        ],
+        "dialogue":[{
+            "speaker": "Quinn",
+            "text": "Ella, I'm blind down here!"
+            }],
         "next_block": "scene_2"
     },
     \end{lstlisting}
@@ -231,77 +226,60 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 
 \section{Learner Interface Design}
 
+\quad Educational visual novels can overwhelm learners when they need to understand difficult concepts outside the main story. In traditional e-learning systems, glossaries are in separate tabs. However, \textit{Cognitive Load Theory} suggests that splitting students' attention between different sources of information makes learning harder. To address this issue, the system uses a \textbf{Word Bank}, as shown in Figure~\ref{fig:word-bank}. It highlights important terms directly in the dialogue. When a term is clicked, a pop-up explains the concept without interrupting the story's flow. Additionally, a \textbf{History Transcript} tracks the dialogue flow, as shown in Figure~\ref{fig:dialogue-history}. The text is cleaned before being added to the history log by removing interactive elements, like clickable choices and definitions, so everything becomes static reference text.
 
-\subsection{Second Subsection}
-And, as required, more subsections.
+\vspace{3em}
 
-\section{Bulleted and Numbered Lists}
-Note: This section begins with the code \texttt{\textbackslash{}section\{Bulleted and Numbered Lists\}} in the~\texttt{.tex} file.
-
-Bulleted or numbered lists are entered using the \texttt{itemize} and \texttt{enumerate} environments, respectively. An \textbf{environment} in \LaTeX{} is a block of code in between a \cmd{begin} and \cmd{end} command. For example, the code
-\begin{quote}\tt
-	\textbackslash{}begin\{itemize\} \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Up \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Down \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Left \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Right \\[-0.5em]
-	\textbackslash{}end\{itemize\}
-\end{quote}
-would produce the following list:
-\begin{itemize} \item Up \item Down \item Left \item Right \end{itemize}
-The indentation is not necessary (the pdf will look the same even it the \texttt{.tex} file does not use indents), but it helps make the code easier to read.
-
-If the \texttt{enumerate} environment is used instead, the bullets are replaced by numbers. For example, the code
-\begin{quote}\tt
-	\textbackslash{}begin\{enumerate\} \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Up \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Down \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Left \\[-0.5em]
-	\hspace*{2em}\textbackslash{}item Right \\[-0.5em]
-	\textbackslash{}end\{enumerate\}
-\end{quote}
-produces the list
-\begin{enumerate} \item Up \item Down \item Left \item Right \end{enumerate}
-
-\section{Figures and Captions}
-As an example of a figure, consider Figure \ref{mylovelydiagram}. Captions are entered using the \texttt{figure} environment (read the previous section for information about environments in general). The code
-\begin{quote}\tt
-	\textbackslash{}begin\{figure\}[h] \\[-0.5em]
-	\hspace*{2em}\textbackslash{}center\textbackslash{}includegraphics[width=12cm]\{image.png\} \\[-0.5em]
-	\hspace*{2em}\textbackslash{}caption\{Highly Technical Diagram\} \\[-0.5em]
-	\hspace*{2em}\textbackslash{}label\{mylovelydiagram\} \\[-0.5em]
-	\textbackslash{}end\{figure\}
-\end{quote}
-will produce the following figure \textbf{if the file \textit{image.png} is in the same folder as your \texttt{.tex} file}.
 \begin{figure}[h]
-	\center\includegraphics[width=12cm]{image.jpg}
-	\caption{Highly Technical Diagram}
-	\label{mylovelydiagram}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/word-bank-1.png}
+        \caption{Highlighted Concept}
+        \label{fig:word-bank-1}
+    \end{subfigure}
+    
+    \vspace{1em}
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/word-bank-2.png} 
+        \caption{List of Concepts}
+        \label{fig:word-bank-2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/word-bank-3.png} 
+        \caption{Concept Definition}
+        \label{fig:word-bank-3}
+    \end{subfigure}
+    \caption{Word Bank System}
+    \label{fig:word-bank}
 \end{figure}
 
-The \texttt{[h]} direction after the beginning of the environment causes the figure to be placed ``here'' in the text (at least approximately -- sometimes \TeX{} will move the figure slightly if the spacing does not work well in exactly the given location). For large figures, use \texttt{[t]} or~\texttt{[b]} instead to place the figure at the top or bottom of a page. You can also leave off the \texttt{[h]} entirely to have \TeX{} make its best guess for where the figure should go.
+\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/dialogue-history.png}
+    \caption{History Transcript System}
+    \label{fig:dialogue-history}
+\end{figure}
 
-The \cmd{includegraphics} command puts an image file from your computer into your finished pdf. \textbf{If there is no file with the given name in the folder with your \texttt{.tex} file, your document will not compile at all.} The bracket text \texttt{[width=12cm]} is optional; without it, \TeX{} will use the normal size of the image. Sometimes this will be far too large, so it is a good idea to specify a width directly.
+\vspace{1em}
 
-Figures have automatic numbering, and it is possible to make cross-references to figures. The code \cmd{ref\{mylovelydiagram\}} will create a link ``\ref{mylovelydiagram}'' in the text with the number of that figure. You can change the text ``mylovelydiagram'' to be anything you want -- it never appears in the final pdf.
+\quad In adaptive learning systems, hidden pathway routing can make it harder for students to feel in control. To help students learn better on their own, the visual novel includes an interactive  \textbf{Timeline}, shown in Figure~\ref{fig:game-timeline}. Rather than hiding the branching structure, the interface shows the student’s current spot, the paths they have taken, and the options ahead. This method is called an \textit{Open Learner Model} (OLM). By visualising the pathways, learners can see the effects of their learning decisions without revealing the underlying algorithms.
 
-\section{Source Code}
+\vspace{3em}
 
-To include programming source code in your document, use the \texttt{lstlisting} environment. The \LaTeX{} code
-\begin{quote}\tt
-	\textbackslash{}begin\{lstlisting\}[language=Python, frame=single] \\[-0.5em]
-    \hspace*{2em}def factorial(n): \\[-0.5em]
-    \hspace*{4em}if n == 0: return 1 \\[-0.5em]
-    \hspace*{4em}else: return n * factorial(n-1) \\[-0.5em]
-    \textbackslash{}end\{lstlisting\}
-\end{quote}
-produces the following in the pdf: \\
-\begin{lstlisting}[language=Python, frame=single, label={lst:label}, caption={Some Python code}]
-def factorial(n):
-	if n == 0: return 1
-	else: return n * factorial(n-1)
-\end{lstlisting}
-You can change \texttt{language=Python} to \texttt{language=Java}, etc., for different programming languages. The \texttt{frame=single} can be removed if you do not want the border around your code snippet. See \url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings} for syntax colouring and other options. You can reference the listing with the command, \texttt{\textbackslash{}ref\{lst:label\}}, as in see listing \ref{lst:label}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/game-timeline.png}
+    \caption{Game Timeline System}
+    \label{fig:game-timeline}
+\end{figure}
+
+
+
 
 
 \chapter{Evaluation and Conclusions}
