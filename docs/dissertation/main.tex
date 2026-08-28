@@ -142,19 +142,6 @@ The University may make this dissertation available to others, but the grade may
 The University may not make this dissertation available to others.
 
 
-\unnumberedchapter{How to Create Table of Contents and List of Figures}
-
-The table of contents on the following page is automatically generated from the \cmd{part}, \cmd{section}, \cmd{subsection}, etc., commands in the \texttt{.tex} file. Depending on your configuration, you may have to typeset your document twice in order to update this section (the first typesetting will create a \texttt{.toc} file, which is then used during the second typesetting).
-
-Similarly you can automatically generate a list of figures from the \cmd{begin\{figure\}} and \cmd{end\{figure\}} commands in this document. Again, you may need to typeset your document twice in order for this list to update.
-
-In your document, remove this entire section and only leave the lines
-\begin{quote}
-	\cmd{tableofcontents} \\
-	\cmd{listoffigures}
-\end{quote}
-These automatically begin new pages that look like Chapters in the finished pdf.
-
 \begingroup
 	\singlespacing
 	\hypersetup{linkcolor=black}
@@ -319,21 +306,22 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 \chapter{Evaluation and Conclusions}
 
 \section{Summary}
-Summarise what you have achieved.
+
+\quad This project created a foundational architecture for an adaptable visual novel. A custom visual novel framework was built using the Godot engine, focusing on separate JSON data saving to allow for easy updates to content. The system's interface was designed as a data-tracking system to prepare for future machine learning integration. Features like the Word Bank and History Transcript were included to reduce extra cognitive effort. Lastly, the dialogue systems were arranged to capture learner choices for stealth assessment.
+
 
 \section{Evaluation of the Project}
-Stand back and evaluate what you have achieved and how well you have met the objectives. Evaluate your achievements against your objectives in Section~\ref{objectives sec}. Demonstrate that you have tackled the project in a professional manner. 
 
-The previous paragraph demonstrates the use of automatic cross-references:  The ``1.2'' is a \textit{cross-reference} to the text in a numbered item of the document; you do not type it as \texttt{1.2} but by using the \cmd{ref} command. The number that appears here will change automatically if the number on the referred-to section is altered, for example, if a chapter or section is added or deleted before it. Cross-references to section are entered with the \cmd{ref} command just like for figures. The \TeX{} code above reads
-\begin{quote}\tt
-	Evaluate your achievements against your objectives \\[-0.5em]
-	in section \textbackslash{}ref\{objectives sec\}.
-\end{quote}
-For this to work, the code for the text on page \pageref{objectives sec} must read
-\begin{quote}\tt
-	\textbackslash{}section\{Scope and Objectives\} \textbackslash{}label\{objectives sec\}
-\end{quote}
-As with figure labels, the text inside of \cmd{label} and \cmd{ref} never appears in the final pdf; you can make it whatever you want as long as you use the same text in each to complete the reference.
+Because this paper focused on the infrastructure phase, the evaluation focuses on software design rather than empirical user statistics.
+
+\begin{itemize}
+    \item \textbf{Data Telemetry:} The dual-assessment pipeline successfully captures both stealth telemetry (dialogue choices) and quiz scores.
+
+    \item \textbf{Decoupled Architecture:} The engine organises the story into separate, self-contained chapters using JSON. This setup creates distinct states needed for a Markov Decision Process (MDP). This shows that the software is ready to support a routing agent that involves random decision-making.
+
+    \item \textbf{UI/UX Heuristics:} The interface keeps students engaged in the story. It prevents them from having to search external menus for glossaries or game progress.
+\end{itemize}
+
 
 \section{Comparison with Existing Work}
 Compare your results with those of work from your State-of-the-Art chapter. What have your results contributed to existing work?
