@@ -116,8 +116,9 @@ I certify that this dissertation reports original work by me during my MSc disse
 \vspace*{\stretch{1}}
 
 \textbf{Signature:} \hspace{\stretch{1}}%
-\textit{(you must delete this, then sign and date this page)} % In TeX, delete this line entirely.
-\hspace{\stretch{1}} \textbf{Date}
+\textbf{OPEOLUWA DANIEL OYEDEJI}
+
+\hspace{\stretch{1}} \textbf{August 28th 2026}
 
 \vspace*{\stretch{1}}
 
@@ -140,6 +141,8 @@ The University may make this dissertation available to others, but the grade may
 \vspace{5cm}
 
 The University may not make this dissertation available to others.
+
+\textbf{OPEOLUWA DANIEL OYEDEJI}
 
 
 \begingroup
@@ -366,10 +369,19 @@ Because this paper focused on the infrastructure phase, the evaluation focuses o
 
 
 \section{Comparison with Existing Work}
-Compare your results with those of work from your State-of-the-Art chapter. What have your results contributed to existing work?
+
+\quad Rjiba et al. studied how to use reinforcement learning to adjust difficulty levels in collaborative game-based learning environments \cite{7}. They created a system called GRADES (Game-based Reinforcement Learning Adaptive Difficulty and Evaluation with Stealth assessment). This system features a layered design that includes smart decision-making, hidden evaluations, and ongoing performance tracking. In contrast, the QZed visual novel uses a similar two-layer system. It mixes hidden assessments, such as interactive dialogue, with direct evaluations, such as quizzes. However, it focuses on a single-player experience rather than a collaborative setting.
+
+\quad Gomes et al. showed that using learning-based strategies can effectively adjust difficulty in healthcare games \cite{11}. They used methods from Reinforcement Learning (RL) and Multi-Armed Bandits (MAB). Their findings showed that MAB algorithms adjusted quickly to changes in rewards compared with full RL methods. To address the initial challenge of having no prior data, they used AI-driven virtual agents to simulate patient symptoms for training before using the system in real life. The QZed project plans to use a similar RL approach for adjusting difficulty. However, it will focus only on data from how users interact with the game, like their dialogue choices and quiz answers, without needing external sensors to guide the model.
+
 
 \section{Future Work}
-Explain any limitations in your results and how things might be improved. Discuss how your work might be developed further.  Reflect on your results in isolation and in relation to what others have achieved in the same field. This self-analysis is particularly important.  You should give a critical evaluation of what went well, and what might be improved.
+
+\begin{itemize}
+    \item \textbf{Deployment and Empirical Study:} The next step is to launch the completed visual novel on the QZed platform for users to test. This will help gather real-world data, such as time spent on tasks, error rates, and pre- and post-test scores. This data will be used to evaluate how much users actually learn.
+
+    \item \textbf{Content Modification:} Future iterations will enable the AI to modify the stories and quizzes. Rather than simply routing a student to a recommended chapter, the AI will adjust the dialogue to target the gaps identified in the learner's stealth assessment.
+\end{itemize}
 
 
 \begin{thebibliography}{99999}
@@ -425,29 +437,7 @@ Explain any limitations in your results and how things might be improved. Discus
 
 \bibitem{SJ} S. Jenner et al. \textit{Using Large Language Models for Narrative Analysis: A Novel Application of Generative AI}. Methods in Psychology, p. 100183, Apr. 2025. Link: \url{https://doi.org/10.1016/j.metip.2025.100183}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Remove later
-
-\bibitem{GW} Greene, D. and Williams, P. C. \textit{Linear Accelerators for Radiation Therapy}, Second Edition. IOP Publishing Ltd., Bristol and Philadelphia, 1997. Link: \url{https://doi.org/10.1201/9780429246562}
-
-\bibitem{ISO} ISO. \textit{Language Of Temporal Ordering Specification}, ISO 8807, International Organization for Standardization, Geneva, 1989. Link: \url{https://www.iso.org/standard/16258.html}
-
-\bibitem{JA} Jacobson, J. and Andersen, O., editors. \textit{Software Controlled Medical Devices}. SP Report 1997:11, Swedish National Testing and Research Institute, Sweden, 1997. Link: \url{https://www.diva-portal.org/smash/get/diva2:962037/FULLTEXT01.pdf}
-
-\bibitem{Turner} Turner, K. J. The Rules for Sailing Races on PDAs, \textit{J. Navigation}, 23(5):114-240, May 2002. Link: \url{https://doi.org/10.1017/S0373463302001765}
-
-\bibitem{JT} Ji, H. and Turner, K. J. Specification and Verification of Synchronous Hardware using LOTOS. In Wu, J. Chanson, S. T. Gao, Q. editors, \textit{Proc.~Formal Methods for Protocol Engineering and Distributed Systems} (FORTE XII/PSTV XIX), pages 295-312, Kluwer Academic Publishers, London, UK, October 1999. Link: \url{https://doi.org/10.1007/978-0-387-35578-8_17}
-
-\bibitem{Stirling} University of Stirling. Computing Science and Mathematics Research Home Page, \url{http://www.cs.stir.ac.uk/research}, April 2002.
-
 \end{thebibliography}
-
-\unnumberedchapter{Appendix 1}
-You may have one or more appendices containing detail, bulky or reference material that is relevant though supplementary to the main text: perhaps additional specifications, tables or diagrams that would distract the reader if placed in the main part of the dissertation. Make sure that you place appropriate cross-references in the main text to direct the reader to the relevant appendices.
-
-\textit{Note that you should \textbf{\large not} include your program listings as an appendix or appendices.} You should submit such text, and other project data/documents to the online repository following the instructions on Canvas.
 
 \end{document}
 
