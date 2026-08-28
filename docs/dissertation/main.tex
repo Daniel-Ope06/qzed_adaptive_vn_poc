@@ -281,11 +281,39 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 
 \section{Stochastic Pathway Routing}
 
-\quad To change the visual novel from a static story to an adaptive tutor, the system uses dynamic difficulty adjustment (DDA) based on a reinforcement learning (RL) model~\cite{7}. Instead of using fixed decision trees that cannot adapt to complex learner data, the system treats adjusting the learning challenge as a step-by-step decision problem. The RL agent monitors the learner's progress and chooses changes that maximise a reward based on teaching goals, like keeping students engaged and helping them master the subject.
+\quad To change the visual novel from a static story to an adaptive tutor, the system uses \textit{Dynamic Difficulty Adjustment} (DDA) based on a reinforcement learning (RL) model~\cite{7}. Instead of using fixed decision trees that cannot adapt to complex learner data, the system treats adjusting the learning challenge as a step-by-step decision problem. The RL agent monitors the learner's progress and chooses changes that maximise a reward based on teaching goals, like keeping students engaged and helping them master the subject.
 
-\quad For stochastic routing, the educational content is broken into separate, self-contained chapters or quizzes. In the reinforcement learning model, these chapters and quizzes act as individual tasks. By dividing up the material, the model creates clear boundaries for calculating rewards and updating its rules before the learner moves on to the next section.
+\quad For stochastic routing, the educational content is broken into separate, self-contained chapters or quizzes. In the reinforcement learning model, these chapters and quizzes act as individual tasks. By dividing up the material, the model creates clear boundaries for calculating rewards and updating its rules before the learner moves on to the next section. The proposed routing system uses ideas from the \textbf{GRADES} framework, which stands for Game-based Reinforcement Learning Adaptive Difficulty and Evaluation with Stealth assessment. It monitors performance continuously and uses hidden assessments to guide the reinforcement learning model~\cite{7}. The main goal is to adjust the difficulty to match the learner's skills without disrupting the flow of gameplay.
 
+\quad The routing system evaluates learners using two methods (Figure~\ref{fig:stealth-quiz}). First, during the visual novel gameplay,  dialogue choices serve as a stealth assessment. Second, at the end of each chapter, learners complete a quiz. The routing model uses both the stealth assessment and the quiz score to decide the next route. If the results show that the learner understands the material, they move on to the next topic chapter. If they struggle, the model guides them to a different chapter of the same topic. If a learner tries all variations and still does not meet the mastery level, the system explains its assessment before moving them on to the next topic. This pipeline is visualised in Figure~\ref{fig:adaptive-pipeline}.
 
+\vspace{3em}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/stealth-assesment.png} 
+        \caption{Stealth assessment through dialogue choices}
+        \label{fig:stealth-assesment}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/quiz-sample.png} 
+        \caption{Quiz sample question}
+        \label{fig:quiz-sample}
+    \end{subfigure}
+    \caption{Learning Evaluation Approaches}
+    \label{fig:stealth-quiz}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/adaptive-pipeline.png}
+    \caption{Stochastic Pathway Routing Logic}
+    \label{fig:adaptive-pipeline}
+\end{figure}
 
 
 \chapter{Evaluation and Conclusions}
