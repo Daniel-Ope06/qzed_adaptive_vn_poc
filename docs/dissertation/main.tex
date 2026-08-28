@@ -279,6 +279,12 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 \end{figure}
 
 
+\section{Stochastic Pathway Routing}
+
+\quad To change the visual novel from a static story to an adaptive tutor, the system uses dynamic difficulty adjustment (DDA) based on a reinforcement learning (RL) model~\cite{7}. Instead of using fixed decision trees that cannot adapt to complex learner data, the system treats adjusting the learning challenge as a step-by-step decision problem. The RL agent monitors the learner's progress and chooses changes that maximise a reward based on teaching goals, like keeping students engaged and helping them master the subject.
+
+\quad For stochastic routing, the educational content is broken into separate, self-contained chapters or quizzes. In the reinforcement learning model, these chapters and quizzes act as individual tasks. By dividing up the material, the model creates clear boundaries for calculating rewards and updating its rules before the learner moves on to the next section.
+
 
 
 
@@ -308,26 +314,55 @@ Compare your results with those of work from your State-of-the-Art chapter. What
 Explain any limitations in your results and how things might be improved. Discuss how your work might be developed further.  Reflect on your results in isolation and in relation to what others have achieved in the same field. This self-analysis is particularly important.  You should give a critical evaluation of what went well, and what might be improved.
 
 
-\unnumberedchapter{How to Create a References section}
-
-Although it looks like a Chapter in the finished pdf, the References section is created using an environment called \texttt{thebibliography} rather than a \cmd{chapter} command. Each item in your bibliography should be typed in the \texttt{.tex} file as its own paragraph that begins with the \cmd{bibitem} command. The first reference below is typed as
-\begin{quote}\tt
-	\textbackslash{}bibitem\{GW\} Greene, D. and Williams, P. C. \textbackslash{}textit\{Linear Accelerators for Radiation Therapy\}, Second Edition. IOP Publishing Ltd., Bristol and Philadelphia, 1997.
-\end{quote}
-Books~\cite{GW}, standards~\cite{ISO}, reports~\cite{JA}, journal articles~\cite{Turner}, conference papers~\cite{JT}, and web pages~\cite{Stirling} are conventionally presented in slightly different ways. Put urls in the~\cmd{url} command to give them fixed-width formatting and an automatic link.
-
-To cite an item from your bibliography in the text, use the \cmd{cite} command, which essentially pairs with \cmd{bibitem} the same way that \cmd{ref} pairs with \cmd{label}. For example, the previous paragraph begins
-\begin{quote}\tt
-	Books \textbackslash{}cite\{GW\}, standards ...
-\end{quote}
-
-\textbf{Observe that all references should have a hyperlink to the work, as can be observed in the bibliography below.}
-
 \begin{thebibliography}{99999}
 
+\bibitem{1} A. Sukhov. \textit{Gamification and Game-Based Learning as Applied Educational Discourses of Game Studies}. 2025 International Conference on Educational Technology Management (ICETM), pp. 1–6, Nov. 2025. Link: \url{https://doi.org/10.1109/icetm67477.2025.11413403}
+
+\bibitem{2} F. Bouzegza. \textit{Enhancing Cybersecurity Awareness through Educational Games: Design of an Adaptive Visual Novel Game}. 2023. Link: \url{https://umontreal.scholaris.ca/server/api/core/bitstreams/052cd0ec-8f46-4f15-ac66-51aae7084146/content}
+
+\bibitem{3} S. Akbarnejad, R. Gavagsaz-Ghoachani, A. Mansouri, and M. Phattanasak. \textit{Gamification in Photovoltaic Panel Learning: Boosting Engagement and Knowledge Retention}. 2025 International Conference on Green Energy, Computing and Sustainable Technology (GECOST), pp. 1–5, Nov. 2025. Link: \url{https://doi.org/10.1109/gecost66002.2025.11324838}
+
+\bibitem{4} R. M. K. R. Rosli and A. F. Zakaria. \textit{Innovative Pedagogy in Engineering Ethics: Validating a Digital Role-Playing Game for Malaysian Pre-University Students}. 2025 10th International STEM Education Conference (iSTEM-Ed), pp. 1–6, Jul. 2025. Link: \url{https://doi.org/10.1109/istem-ed65612.2025.11129441}
+
+\bibitem{5} N. Khan et al. \textit{An Adaptive Game-Based Learning Strategy for Children Road Safety Education and Practice in Virtual Space}. Sensors, vol. 21, no. 11, p. 3661, May 2021. Link: \url{https://doi.org/10.3390/s2111366141}
+
+\bibitem{6} H. Leburu, K. Kumar, S. Srinivasulu, Suganthi. L, and J. R. raj. \textit{AI Powered: Gamification Strategy for Dyslexic Children}. 2026 International Conference on Signal, Systems, and Computing for Next-Gen Automation (ICSSCNA), pp. 1632–1638, May 2026. Link: \url{https://doi.org/10.1109/icsscna68616.2026.11546724}
+
+\bibitem{7} A. Rjiba, L. Cheniti‐Belcadhi, and J. Kasperiuniene. \textit{Adaptive Difficulty and Stealth Assessment in Collaborative Game‐Based Learning}. Computer Applications in Engineering Education, vol. 33, no. 6, Nov. 2025. Link: \url{https://doi.org/10.1002/cae.70102}
+
+\bibitem{8} A.-C. E. Ding and C.-H. Yu. \textit{Serious Game-Based Learning and Learning by Making Games: Types of Game-Based Pedagogies and Student Gaming Hours Impact Students' Science Learning Outcomes}. Computers and education/Computers \& education, vol. 218, pp. 105075–105075, May 2024. Link: \url{https://doi.org/10.1016/j.compedu.2024.105075}
+
+\bibitem{9} M. Aborokbah. \textit{Game-Based Learning Feedback Analysis Using Reinforcement Q-Learning in Interactive Education Apps}. 2025 6th International Conference on Information Science and Education (ICISE-IE), pp. 6–11, Dec. 2025. Link: \url{https://doi.org/10.1109/icise-ie68873.2025.11379062}
+
+\bibitem{10} R. Maskeliunas et al. \textit{Deep Reinforcement Learning-Based iTrain Serious Game for Caregivers Dealing With Post-Stroke Patients}. Information, vol. 13, no. 12, p. 564, Nov. 2022. Link: \url{https://doi.org/10.3390/info13120564}
+
+\bibitem{11} E. Kalafatis, K. Mitsis, K. Zarkogianni, M. Athanasiou, and K. Nikita. \textit{A Modular Framework for Automated Evaluation of Procedural Content Generation in Serious Games With Deep Reinforcement Learning Agents}. IEEE Transactions on Games, vol. 17, no. 4, pp. 1003–1012, Dec. 2025. Link: \url{https://doi.org/10.1109/tg.2025.3589439}
+
+\bibitem{12} J. Liang, Y. Tang, R. Hare, B. Wu, and F.-Y. Wang. \textit{A Learning-Embedded Attributed Petri Net to Optimize Student Learning in a Serious Game}. IEEE Transactions on Computational Social Systems, vol. 10, no. 3, pp. 869–877, Dec. 2021. Link: \url{https://doi.org/10.1109/tcss.2021.3132355}
+
+\bibitem{13} R. Hare and Y. Tang. \textit{Petri Nets and Hierarchical Reinforcement Learning for Personalized Student Assistance in Serious Games}. 2022 International Conference on Cyber-Physical Social Intelligence (ICCSI), pp. 733–737, Nov. 2022. Link: \url{https://doi.org/10.1109/iccsi55536.2022.9970680}
+
+\bibitem{14} R. Hare and Y. Tang. \textit{Ontology-Driven Reinforcement Learning for Personalized Student Support}. 2024 IEEE International Conference on Systems, Man, and Cybernetics (SMC), pp. 2555–2560, Oct. 2024. Link: \url{https://doi.org/10.1109/smc54092.2024.10832036}
+
+\bibitem{15} R. Hare, Y. Tang, and S. Ferguson. \textit{An Intelligent Serious Game for Digital Logic Education to Enhance Student Learning}. IEEE Transactions on Education, vol. 67, no. 3, pp. 387–394, Jun. 2024. Link: \url{https://doi.org/10.1109/te.2024.3359001}
+
+\bibitem{16} F. A. Damastuti, K. Firmansyah, Y. M. Arif, T. Dutono, A. Barakbah, and M. Hariadi. \textit{Dynamic Level of Difficulties Using Q-Learning and Fuzzy Logic}. IEEE Access, vol. 12, pp. 137775–137789, Jan. 2024. Link: \url{https://doi.org/10.1109/access.2024.3457801}
+
+\bibitem{17} F. Stasolla, K. Akbar, A. Passaro, M. Dragone, M. Di Gioia, and A. Zullo. \textit{Integrating Reinforcement Learning and Serious Games to Support People With Rare Genetic Diseases and Neurodevelopmental Disorders: Outcomes on Parents and Caregivers}. Frontiers in psychology, vol. 15, Apr. 2024. Link: \url{https://doi.org/10.3389/fpsyg.2024.1372769}
+
+\bibitem{18} S. Gomes et al. \textit{Dynamic Difficulty Adjustment in Psoriatic Arthritis Serious Games Using Learning-Driven Policies}. IEEE Access, pp. 1–1, 2026. Link: \url{https://doi.org/10.1109/access.2026.3726144}
+
+\bibitem{19} E. Faber, Mary, Walter, L. J. Bruinink, Marije Hogeveen, and van Merriënboer. \textit{Effects of Adaptive Scaffolding on Performance, Cognitive Load and Engagement in Game-Based Learning: A Randomized Controlled Trial}. BMC Medical Education, vol. 24, no. 1, Aug. 2024. Link: \url{https://doi.org/10.1186/s12909-024-05698-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibitem{CJ} C. Jennings, S. Pham, and M. J. Dupuis. \textit{Engagement, Usability, and Learning in Narrative-Driven Cybersecurity Awareness Games}. 2025 IEEE 16th Annual Ubiquitous Computing, Electronics \& Mobile Communication Conference (UEMCON), pp. 0316–0325, Oct. 2025. Link: \url{https://doi.org/10.1109/uemcon67449.2025.11267542}
 
 \bibitem{SJ} S. Jenner et al. \textit{Using Large Language Models for Narrative Analysis: A Novel Application of Generative AI}. Methods in Psychology, p. 100183, Apr. 2025. Link: \url{https://doi.org/10.1016/j.metip.2025.100183}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remove later
 
 \bibitem{GW} Greene, D. and Williams, P. C. \textit{Linear Accelerators for Radiation Therapy}, Second Edition. IOP Publishing Ltd., Bristol and Philadelphia, 1997. Link: \url{https://doi.org/10.1201/9780429246562}
 
