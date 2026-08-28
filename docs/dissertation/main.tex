@@ -7,8 +7,12 @@
 \usepackage[export]{adjustbox}
 \usepackage[left=3cm, right=3cm]{geometry}
 \usepackage{listings} % for source code
-\lstset{basicstyle=\small\ttfamily,showstringspaces=false,keywordstyle=\bfseries\color{blue!70!black}}
+% \lstset{basicstyle=\small\ttfamily,showstringspaces=false,keywordstyle=\bfseries\color{blue!70!black}}
 \usepackage[colorlinks=true,allcolors=red,urlcolor=blue]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{xcolor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % with 12 point font, single line spacing, single-sided pages
 \setlength{\parskip}{0.5\baselineskip}
@@ -22,6 +26,32 @@
 \newcommand{\unnumberedchapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}  
 \let\tempit\itemize \let\tempeit\enditemize \renewenvironment{itemize}{\vspace{-1em}\tempit\addtolength{\itemsep}{-0.5\baselineskip}}{\tempeit} % Changes itemize spacing
 \let\tempen\enumerate \let\tempeen\endenumerate \renewenvironment{enumerate}{\vspace{-1em}\tempen\addtolength{\itemsep}{-0.5\baselineskip}}{\tempeen} % Changes enumerate spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- Python Code Formatting Setup ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\parindent}{0pt}
 
@@ -175,12 +205,32 @@ To successfully create an adaptive visual novel, the system needs to connect gam
 
 \quad Many digital learning platforms use static text, which can quickly cause learners to lose interest. To address this, the game is designed as a \textit{Narrative-Based Learning Environment} (NBLE). Visual novels are like finite-state machines wrapped in a graphical interface, making them usable as an NBLE. By placing the learner in a story that responds to their actions, the system uses situated cognition to help them remember what they learn better~\cite{CJ}. However, for this environment to work as an intelligent tutor, it needs both narrative presentation and data telemetry.
 
+\quad While visual novel frameworks like \texttt{Ren’Py} offer strong storytelling tools, they limit control over the low-level systems. \texttt{Ren’Py} works best for straightforward stories with fixed choices or paths, making it hard to collect detailed data in real time. Godot Engine was selected to build a custom visual novel framework because its node-based, object-oriented architecture makes it easy to expand the system. The custom framework uses a Global Singleton called the \texttt{GameManager} Autoload. This tool tracks every player action, such as choosing dialogue or clicking on the user interface. This creates a steady flow of information about how players learn.
 
-\subsection{First Subsection}
-If necessary, also use subsections. Subsections are entered using the \cmd{subsection} command (all these heading styles are self-numbering).
+\quad A critical requirement was ensuring the AI model could update the game's educational content without recompiling the software. To do this, the story content is separated from the engine logic by using \texttt{JSON} (JavaScript Object Notation) to organise the data (Listing \ref{lst:json}). Instead of hardcoding dialogue into scripts, the game uses lightweight, language-agnostic \texttt{JSON} files to define the characters, text, and pathway logic. This setup lets the game's backend easily send new or AI-customised chapters to the client~\cite{SJ}.
 
-%\subsubsection{First Subsubsection}
-%If you really need subsubsections, enter these using the \cmd{subsubsection} command. Note that subsubsections in \TeX{} do not display numbers or appear in the Table of Contents (they just show a bold header on its own line).
+
+\noindent\begin{minipage}{1\linewidth}
+    \begin{lstlisting}[language=Python, caption=JSON Dialogue Block Structure, label=lst:json]
+"chapter_id": "1a",
+"blocks": {
+    "scene_1": {
+        "type": "static_cg",
+        "background": "quinn_trapped",
+        "dialogue":[
+            {
+                "speaker": "Quinn",
+                "text": "Ella, I'm blind down here!"
+            }
+        ],
+        "next_block": "scene_2"
+    },
+    \end{lstlisting}
+\end{minipage}
+
+
+\section{Learner Interface Design}
+
 
 \subsection{Second Subsection}
 And, as required, more subsections.
@@ -298,6 +348,8 @@ To cite an item from your bibliography in the text, use the \cmd{cite} command, 
 \begin{thebibliography}{99999}
 
 \bibitem{CJ} C. Jennings, S. Pham, and M. J. Dupuis. \textit{Engagement, Usability, and Learning in Narrative-Driven Cybersecurity Awareness Games}. 2025 IEEE 16th Annual Ubiquitous Computing, Electronics \& Mobile Communication Conference (UEMCON), pp. 0316–0325, Oct. 2025. Link: \url{https://doi.org/10.1109/uemcon67449.2025.11267542}
+
+\bibitem{SJ} S. Jenner et al. \textit{Using Large Language Models for Narrative Analysis: A Novel Application of Generative AI}. Methods in Psychology, p. 100183, Apr. 2025. Link: \url{https://doi.org/10.1016/j.metip.2025.100183}
 
 \bibitem{GW} Greene, D. and Williams, P. C. \textit{Linear Accelerators for Radiation Therapy}, Second Edition. IOP Publishing Ltd., Bristol and Philadelphia, 1997. Link: \url{https://doi.org/10.1201/9780429246562}
 
